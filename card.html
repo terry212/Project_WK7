@@ -4,22 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="card.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css">
+    <link rel="stylesheet" href="card.css" />
     <title>Document</title>
 </head>
 
 <body>
-    <div class="ui special cards" id="movieCard">
+    <div class="ui special link cards" id="movieCard">
         <div class="card">
-            <div class="blurring dimmable image">
-                <div class="ui dimmer">
-                    <div class="content">
-                        <div class="center">
-                            <div class="ui inverted button">Select Movie</div>
-                        </div>
-                    </div>
-                </div>
+            <div class="image" id="movieposter">
                 <img src="Assets/Images/sample_image.jpg">
             </div>
             <div class="content" id="movie-content">
@@ -34,11 +27,15 @@
                     “The Fate of the Furious,” focusing on Johnson's Luke Hobbs and Statham's Deckard Shaw.)
                 </div>
             </div>
-            <div class="extra content">
+            <div class="extra content" id="rating">
                 <p>Rating: 6.7<p>
             </div>
         </div>
-
+    </div>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="card.js"></script>
 </body>
 
 </html>
