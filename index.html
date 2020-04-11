@@ -11,6 +11,10 @@
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js">
     </script>
+    <link rel="stylesheet" href="modalStyle.css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Courgette|Marko+One|Montserrat:400,500,600|Playball&display=swap"
+        rel="stylesheet">
     <title>Watch and Sip
     </title>
 </head>
@@ -20,7 +24,8 @@
     <!-- needs to pop when user visits -->
     <div class="ui modal" id="WelcomeModal">
         <div class="header">
-            Welcome
+            <img class="ui small image" id="logoImg" src="./Assets/Images/Watch-n-Sip.png" alt="Watch and Sip"> Watch 'n
+            Sip
         </div>
         <div class="content">
             <div class="description">
@@ -108,10 +113,10 @@
     </div>
 
     <!-- main  -->
-    
+
 
     <div class="ui stackable center aligned page padded grid">
-        
+
         <!--Movie Display-->
         <div class="four column row" id="movieDisplay">
             <div class="column">
@@ -171,66 +176,66 @@
                             </div>
                         </div>
                         <div class="eight wide column">
-                        <div class="ui fluid card">
-                            <button class="ui primary button">
-                                Start over
-                            </button>
+                            <div class="ui fluid card">
+                                <button class="ui primary button">
+                                    Start over
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" id="gamesDisplay">
+                    <div class="ui grid">
+                        <div class="four wide column">
+                            <div class="ui fluid card">
+                                <img src="Assets/Images/sample_image.jpg"></img>
+                            </div>
+                        </div>
+                        <div class="four wide column">
+                            <div class="ui fluid card">
+                                <img src="Assets/Images/sample_image.jpg"></img>
+                            </div>
+                        </div>
+                        <div class="four wide column">
+                            <div class="ui fluid card">
+                                <img src="Assets/Images/sample_image.jpg"></img>
+                            </div>
+                        </div>
+                        <div class="four wide column">
+                            <div class="ui fluid card">
+                                <img src="Assets/Images/sample_image.jpg"></img>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row" id="gamesDisplay">
-                <div class="ui grid">
-                    <div class="four wide column">
-                        <div class="ui fluid card">
-                            <img src="Assets/Images/sample_image.jpg"></img>
-                        </div>
+
+            <div class="four wide column" id="drinkDisplay">
+                <div class="row">
+                    <div class="ui fluid card">
+                        <img src="Assets/Images/sample_image.jpg"></img>
                     </div>
-                    <div class="four wide column">
-                        <div class="ui fluid card">
-                            <img src="Assets/Images/sample_image.jpg"></img>
-                        </div>
+                </div>
+                <div class="row">
+                    <div class="ui fluid card">
+                        <img src="Assets/Images/sample_image.jpg"></img>
                     </div>
-                    <div class="four wide column">
-                        <div class="ui fluid card">
-                            <img src="Assets/Images/sample_image.jpg"></img>
-                        </div>
+                </div>
+                <div class="row">
+                    <div class="ui fluid card">
+                        <img src="Assets/Images/sample_image.jpg"></img>
                     </div>
-                    <div class="four wide column">
-                        <div class="ui fluid card">
-                            <img src="Assets/Images/sample_image.jpg"></img>
-                        </div>
+                </div>
+                <div class="row">
+                    <div class="ui fluid card">
+                        <img src="Assets/Images/sample_image.jpg"></img>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="four wide column" id="drinkDisplay">
-            <div class="row">
-                <div class="ui fluid card">
-                    <img src="Assets/Images/sample_image.jpg"></img>
-                </div>
-            </div>
-            <div class="row">
-                <div class="ui fluid card">
-                    <img src="Assets/Images/sample_image.jpg"></img>
-                </div>
-            </div>
-            <div class="row">
-                <div class="ui fluid card">
-                    <img src="Assets/Images/sample_image.jpg"></img>
-                </div>
-            </div>
-            <div class="row">
-                <div class="ui fluid card">
-                    <img src="Assets/Images/sample_image.jpg"></img>
-                </div>
-            </div>
-        </div>
     </div>
 
-    </div>
-    
     <!-- add source.js later -->
     <script>
         $('.ui.modal').modal('show');

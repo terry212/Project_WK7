@@ -1,0 +1,14 @@
+/* font-family: 'Montserrat', sans-serif; */
+/* font-family: 'Marko One', serif; */
+/* font-family: 'Playball', cursive; */
+
+#WelcomeModal .header {
+    text-align: center;
+    margin: auto;
+    font-family: 'Courgette', cursive;
+    font-size: 40pt;
+}
+
+#WelcomeModal #logoImg {
+    margin: auto;
+}
