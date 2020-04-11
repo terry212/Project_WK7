@@ -31,45 +31,51 @@
             <div class="ui form" id="moodForm">
                 <div class="grouped fields">
                     <div class="field">
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="choices" tabindex="0" class="hidden">
-                            <label>Groovy</label>
+                        <div class="ui radio">
+                            <input type="radio" value="excited" name="choices" tabindex="0" class="hidden">
+                            <label>Excited</label>
                         </div>
                     </div>
                     <div class="field">
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="choices" tabindex="0" class="hidden">
-                            <label>Happy</label>
+                        <div class="ui radio">
+                            <input type="radio" value="thoughtful" name="choices" tabindex="0" class="hidden">
+                            <label>Thoughtful</label>
                         </div>
                     </div>
                     <div class="field">
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="choices" tabindex="0" class="hidden">
+                        <div class="ui radio">
+                            <input type="radio" name="choices" value="sad" tabindex="0" class="hidden">
                             <label>Sad</label>
                         </div>
                     </div>
                     <div class="field">
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="choices" tabindex="0" class="hidden">
-                            <label>Scared</label>
+                        <div class="ui radio">
+                            <input type="radio" name="choices" value="supernatural" tabindex="0" class="hidden">
+                            <label>Supernatural</label>
                         </div>
                     </div>
                     <div class="field">
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="choices" tabindex="0" class="hidden">
-                            <label>Adventurous</label>
+                        <div class="ui radio">
+                            <input type="radio" name="choices" value="happy" tabindex="0" class="hidden">
+                            <label>Happy</label>
                         </div>
                     </div>
                     <div class="field">
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="choices" tabindex="0" class="hidden">
-                            <label>Mysterious</label>
+                        <div class="ui radio">
+                            <input type="radio" name="choices" value="angry" tabindex="0" class="hidden">
+                            <label>Angry</label>
                         </div>
                     </div>
                     <div class="field">
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="choices" tabindex="0" class="hidden">
-                            <label>You tell me!</label>
+                        <div class="ui radio">
+                            <input type="radio" name="choices" value="inquisitive" tabindex="0" class="hidden">
+                            <label>Inquisitive</label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui radio">
+                            <input type="radio" name="choices" value="romantic" tabindex="0" class="hidden">
+                            <label>Romantic</label>
                         </div>
                     </div>
                 </div>
@@ -78,26 +84,26 @@
             <div class="ui form" id="crowdForm">
                 <div class="grouped fields">
                     <div class="field">
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="choices" tabindex="0" class="hidden">
+                        <div class="ui radio">
+                            <input type="radio" name="partyChoices" value="flyingSolo" tabindex="0" class="hidden">
                             <label>Flying Solo</label>
                         </div>
                     </div>
                     <div class="field">
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="choices" tabindex="0" class="hidden">
-                            <label>With Spouse</label>
+                        <div class="ui radio">
+                            <input type="radio" name="partyChoices" value="withSO" tabindex="0" class="hidden">
+                            <label>With Significant Other</label>
                         </div>
                     </div>
                     <div class="field">
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="choices" tabindex="0" class="hidden">
+                        <div class="ui radio">
+                            <input type="radio" name="partyChoices" value="withFamily" tabindex="0" class="hidden">
                             <label>With Family</label>
                         </div>
                     </div>
                     <div class="field">
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="choices" tabindex="0" class="hidden">
+                        <div class="ui radio">
+                            <input type="radio" name="partyChoices" value="withFriends" tabindex="0" class="hidden">
                             <label>With Friends</label>
                         </div>
                     </div>
@@ -115,22 +121,22 @@
         <!--Movie Display-->
         <div class="four column row" id="movieDisplay">
             <div class="column">
-                <div class="ui fluid card">
+                <div class="ui fluid card" id="movie0">
                     <img src="Assets/Images/sample_image.jpg"></img>
                 </div>
             </div>
             <div class="column">
-                <div class="ui fluid card">
+                <div class="ui fluid card" id="movie1">
                     <img src="Assets/Images/sample_image.jpg"></img>
                 </div>
             </div>
             <div class="column">
-                <div class="ui fluid card">
+                <div class="ui fluid card" id="movie2">
                     <img src="Assets/Images/sample_image.jpg"></img>
                 </div>
             </div>
             <div class="column">
-                <div class="ui fluid card">
+                <div class="ui fluid card" id="movie3">
                     <img src="Assets/Images/sample_image.jpg"></img>
                 </div>
             </div>
@@ -230,7 +236,7 @@
     </div>
 
     </div>
-    
+    <script src="script.js"></script>
     <!-- add source.js later -->
     <script>
         $('.ui.modal').modal('show');
