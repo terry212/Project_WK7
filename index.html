@@ -27,87 +27,96 @@
             <img class="ui small image" id="logoImg" src="./Assets/Images/Watch-n-Sip.png" alt="Watch and Sip"> Watch 'n
             Sip
         </div>
-        <div class="content">
+        <!-- <div class="content">
             <div class="description">
-                tell us a little about you
+                Who are you with?
             </div>
-        </div>
+        </div> -->
         <div class="actions">
-            <div class="ui form" id="moodForm">
-                <div class="grouped fields">
-                    <div class="field">
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="choices" tabindex="0" class="hidden">
-                            <label>Groovy</label>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="choices" tabindex="0" class="hidden">
-                            <label>Happy</label>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="choices" tabindex="0" class="hidden">
-                            <label>Sad</label>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="choices" tabindex="0" class="hidden">
-                            <label>Scared</label>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="choices" tabindex="0" class="hidden">
-                            <label>Adventurous</label>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="choices" tabindex="0" class="hidden">
-                            <label>Mysterious</label>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="choices" tabindex="0" class="hidden">
-                            <label>You tell me!</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <hr>
             <div class="ui form" id="crowdForm">
-                <div class="grouped fields">
+                <div class="inline fields">
+                    <label>Who are you with?</label>
                     <div class="field">
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="choices" tabindex="0" class="hidden">
-                            <label>Flying Solo</label>
+                        <div class="ui radio">
+                            <input type="radio" name="company" value="solo">
+                            <label><i class="large fighter jet icon"> </i> Flying Solo</label>
                         </div>
                     </div>
                     <div class="field">
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="choices" tabindex="0" class="hidden">
-                            <label>With Spouse</label>
+                        <div class="ui radio">
+                            <input type="radio" name="company" value="spouse">
+                            <label><i class="users icon"></i>With Spouse</label>
                         </div>
                     </div>
                     <div class="field">
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="choices" tabindex="0" class="hidden">
+                        <div class="ui radio">
+                            <input type="radio" name="company" value="family">
                             <label>With Family</label>
                         </div>
                     </div>
                     <div class="field">
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="choices" tabindex="0" class="hidden">
+                        <div class="ui radio">
+                            <input type="radio" name="company" value="friends">
                             <label>With Friends</label>
                         </div>
                     </div>
                 </div>
             </div>
+            <hr>
+            <div class="ui form" id="moodForm">
+                <div class="inline fields">
+                    <label>What is the mood for today?</label>
+                    <div class="field">
+                        <div class="ui radio">
+                            <input type="radio" name="mood" value="excited">
+                            <label>Excited</label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui radio">
+                            <input type="radio" name="mood" value="thoughtful">
+                            <label>Thoughtful</label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui radio">
+                            <input type="radio" name="mood" value="sad">
+                            <label>Sad</label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui radio">
+                            <input type="radio" name="mood" value="supernatural">
+                            <label>Supernatural</label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui radio">
+                            <input type="radio" name="mood" value="happy">
+                            <label>Happy</label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui radio">
+                            <input type="radio" name="mood" value="angry">
+                            <label>Angry</label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui radio">
+                            <input type="radio" name="mood" value="inquisitive">
+                            <label>Inquisitive</label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui radio">
+                            <input type="radio" name="mood" value="romantic">
+                            <label>Romantic</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
             <button type="submit" id="modalSubmit">Enter</button>
         </div>
     </div>

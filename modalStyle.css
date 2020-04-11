@@ -12,3 +12,13 @@
 #WelcomeModal #logoImg {
     margin: auto;
 }
+
+.ui.form .inline.fields>label {
+    display: flex;
+    margin: 0 0 3% 0;
+    font-size: 16px;
+}
+
+/* i.icon {
+    font-size: 1.3em;
+} */
