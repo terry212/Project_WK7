@@ -4,8 +4,8 @@ var mealQueryURL;
 var userInput;
 
 $("input[type='radio']").click(function () {
-    userInput = $("input[name='choices']:checked").val();
-    userInput2 = $("input[name='partyChoices']:checked").val();
+    userInput = $("input[name='mood']:checked").val();
+    userInput2 = $("input[name='company']:checked").val();
     checkUserInput();
 })
 
