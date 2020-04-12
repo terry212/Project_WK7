@@ -81,6 +81,11 @@ $("#modalSubmit").on("click", function () {
         var lastRandom = [];
         var randomMovie;
 
+        var movieContainer = $("<div>");
+        $(movieContainer).attr("class", "ui special link cards");
+        $(movieContainer).attr("id", "movieCard");
+        $("body").prepend($(movieContainer))
+
         for (i = 0; i < 4; i++) {
 
             // Chooses random number, avoids duplicates
@@ -99,12 +104,36 @@ $("#modalSubmit").on("click", function () {
             var movieTitle = movieArray[randomMovie].title;
             var moviePosterPath = movieArray[randomMovie].poster_path;
             var moviePosterURL = "http://image.tmdb.org/t/p/w185" + moviePosterPath;
-            var popularityRating = Math.round(movieArray[randomMovie].popularity) + "%"
+            var rating = movieArray[randomMovie].vote_average;
             var overview = movieArray[randomMovie].overview;
+            var releaseDate = movieArray[randomMovie].release_date;
             console.log(movieTitle);
 
-            // Appends movie title to appropriate div
-            $("#movie" + i).append(movieTitle);
+            // Appends movie poster to the appropriate div
+            var movieDivCard = $("<div>");
+            var moviePoster = $("<div>");
+            $(moviePoster).attr({"class": "image", "id": "movieposter"}).append("<img src='" + moviePosterURL + "'/>");
+            $(movieDivCard).attr("class", "card").append($(moviePoster));
+            $(movieContainer).append($(movieDivCard));
+
+            // Appends movie content to the appropriate div
+            var movieContentDiv = $("<div>");
+            $(movieContentDiv).attr({"class": "content", "id": "movie-content"});
+            $(movieDivCard).append($(movieContentDiv));
+
+            // Create movie title header, append to movieContentDiv
+            $(movieContentDiv).append("<a class='header' id='movie-title'>" + movieTitle + "</a>");
+
+            // Create meta div and release date, append to movieContentDiv
+            var metaDiv = $("<div>");
+            $(metaDiv).attr("class", "meta").append("<span class='date'>Release Date: " + releaseDate + "</span>");
+            $(movieContentDiv).append($(metaDiv));
+
+            // Create movie description div, append to movieContentDiv
+            $(movieContentDiv).append("<div class='description' id='movie-description'>" + overview + "</div>")
+
+            // Create rating, append to movieDivCard
+            $(movieDivCard).append("<div class='extra content' id='rating'><p>Rating: " + rating + "</p></div>");
 
 
         }
