@@ -2,55 +2,110 @@ var movieQueryURL;
 var drinkQueryURL;
 var mealQueryURL;
 var userInput;
+var lastRandom = [];
+var movieArray;
+var randomMovie;
+var newMovie;
+var page = Math.floor(Math.random() * 12) + 1;
 
+// On load, hide question 2 and the "enter" button and generate a "next" button
+$(document).ready(function () {
+    $("#moodForm").hide();
+    $("hr").hide();
+    $("#modalSubmit").hide();
+
+    var nextBtn = $("<button class='ui button' id='next'><i class='fas fa-arrow-right'></i></button>");
+    $("#crowdForm").append($(nextBtn)).css("text-align", "center");
+    $("label").css("justify-content", "center");
+
+    $("#next").on("click", function() {
+        if ($("input[name='company']").is(':checked')) {
+            $("#error").remove();
+            $("#crowdForm").hide();
+            $("#moodForm").show().css("text-align", "center");
+            $("hr").hide();
+            $("#next").hide();
+            $("#modalSubmit").show();
+        } else {
+            console.log("error");
+            $("#error").remove();
+            $("#moodForm").hide();
+            $("hr").hide();
+            $("#modalSubmit").hide();
+            $(".actions").prepend("<div id='error' style='color:red; text-align:center;'><h4>You must choose an option.</h4></div>");
+    
+        }
+    }); 
+})
+
+
+// After next button is clicked, hide question 1 and show question 2 w/ enter button
+
+
+// Modal should not disappear if clicked outside of box
+
+
+// Function registers a radio button click
 $("input[type='radio']").click(function () {
     userInput = $("input[name='mood']:checked").val();
     userInput2 = $("input[name='company']:checked").val();
     checkUserInput();
 })
 
+function checkMovie(randomMovie) {
+    if (lastRandom.indexOf(randomMovie) == -1) {
+        lastRandom.push(randomMovie);
+        newMovie = randomMovie;
+    } else {
+        randomMovie = Math.floor((Math.random() * movieArray.length));
+        checkMovie(randomMovie);
+    }
+    return newMovie;
+}
+
+// Function checks user input and determines movie, drink, and meal query URLs based on TMDB API
 function checkUserInput() {
     switch (userInput) {
         case "excited":
-            movieQueryURL = "https://api.themoviedb.org/3/discover/movie?with_genres=28,12&api_key=e8f1cf6169288a814923ee8e5fe9e6f9";
+            movieQueryURL = "https://api.themoviedb.org/3/discover/movie?with_genres=28,12&api_key=e8f1cf6169288a814923ee8e5fe9e6f9&page=" + page;
             drinkQueryURL = "https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php";
             console.log("excited clicked");
             break;
 
         case "thoughtful":
-            movieQueryURL = "https://api.themoviedb.org/3/discover/movie?with_genres=99,36,10752&api_key=e8f1cf6169288a814923ee8e5fe9e6f9";
+            movieQueryURL = "https://api.themoviedb.org/3/discover/movie?with_genres=99,36,10752&api_key=e8f1cf6169288a814923ee8e5fe9e6f9&page=" + page;
             drinkQueryURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Ordinary_Drink";
             break;
 
         case "sad":
-            movieQueryURL = "https://api.themoviedb.org/3/discover/movie?with_genres=18&api_key=e8f1cf6169288a814923ee8e5fe9e6f9";
+            movieQueryURL = "https://api.themoviedb.org/3/discover/movie?with_genres=18&api_key=e8f1cf6169288a814923ee8e5fe9e6f9&page=" + page;
             drinkQueryURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=blue";
             break;
 
         case "supernatural":
-            movieQueryURL = "https://api.themoviedb.org/3/discover/movie?with_genres=14,878&api_key=e8f1cf6169288a814923ee8e5fe9e6f9";
+            movieQueryURL = "https://api.themoviedb.org/3/discover/movie?with_genres=14,878&api_key=e8f1cf6169288a814923ee8e5fe9e6f9&page=" + page;
             drinkQueryURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?f=z";
             break;
 
         case "happy":
-            movieQueryURL = "https://api.themoviedb.org/3/discover/movie?with_genres=35&api_key=e8f1cf6169288a814923ee8e5fe9e6f9";
+            movieQueryURL = "https://api.themoviedb.org/3/discover/movie?with_genres=35&api_key=e8f1cf6169288a814923ee8e5fe9e6f9&page=" + page;
             drinkQueryURL = "https://www.thecocktaildb.com/api/json/v1/1/popular.php";
             break;
 
         case "angry":
-            movieQueryURL = "https://api.themoviedb.org/3/discover/movie?with_genres=35&api_key=e8f1cf6169288a814923ee8e5fe9e6f9";
+            movieQueryURL = "https://api.themoviedb.org/3/discover/movie?with_genres=35&api_key=e8f1cf6169288a814923ee8e5fe9e6f9&page=" + page;
             drinkQueryURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=shot";
             break;
 
         case "romantic":
-            movieQueryURL = "https://api.themoviedb.org/3/discover/movie?with_genres=10749,35&api_key=e8f1cf6169288a814923ee8e5fe9e6f9";
+            movieQueryURL = "https://api.themoviedb.org/3/discover/movie?with_genres=10749,35&api_key=e8f1cf6169288a814923ee8e5fe9e6f9&page=" + page;
             drinkQueryURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=Champagne_flute";
             break;
     }
 
     switch (userInput2) {
         case "withFamily":
-            movieQueryURL = "https://api.themoviedb.org/3/discover/movie?with_genres=10751&ertification.lte=G&api_key=e8f1cf6169288a814923ee8e5fe9e6f9";
+            movieQueryURL = "https://api.themoviedb.org/3/discover/movie?with_genres=10751&ertification.lte=G&api_key=e8f1cf6169288a814923ee8e5fe9e6f9&page=" + page;
             drinkQueryURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic";
             mealQueryURL = "https://www.themealdb.com/api/json/v2/9973533/randomselection.php"
             // must negate all other choices and go into family section
@@ -68,45 +123,35 @@ function checkUserInput() {
             mealQueryURL = "https://www.themealdb.com/api/json/v2/9973533/randomselection.php";
             break;
     }
-
 }
 
+// After answering both questions, create movie cards and randomly generate 3 movies based on user input
 $("#modalSubmit").on("click", function () {
-
     $.ajax({
         url: movieQueryURL,
         method: "GET"
     }).then(function (response) {
-        var movieArray = response.results;
-        var lastRandom = [];
-        var randomMovie;
+        movieArray = response.results;
 
         var movieContainer = $("<div>");
-        $(movieContainer).attr("class", "ui special link cards");
-        $(movieContainer).attr("id", "movieCard");
+        $(movieContainer).attr({"class": "ui special link cards", "id": "movieCard"});
         $("body").prepend($(movieContainer))
 
         for (i = 0; i < 4; i++) {
 
-            // Chooses random number, avoids duplicates
-            if (lastRandom == '') {
-                randomMovie = Math.floor((Math.random() * movieArray.length));
-                lastRandom.push(randomMovie);
-            } else {
-                randomMovie = Math.floor((Math.random() * movieArray.length));
-                if (lastRandom.includes(randomMovie)) {
-                    randomMovie = Math.floor((Math.random() * movieArray.length));
-                    lastRandom.push(randomMovie);
-                }
-            }
+
+
+            // Generate random movie and check if it's already in the array of movies chosen
+            randomMovie = Math.floor((Math.random() * movieArray.length));
+            checkMovie(randomMovie);
 
             // Assign variables for content
-            var movieTitle = movieArray[randomMovie].title;
-            var moviePosterPath = movieArray[randomMovie].poster_path;
-            var moviePosterURL = "http://image.tmdb.org/t/p/w185" + moviePosterPath;
-            var rating = movieArray[randomMovie].vote_average;
-            var overview = movieArray[randomMovie].overview;
-            var releaseDate = movieArray[randomMovie].release_date;
+            var movieTitle = movieArray[newMovie].title;
+            var moviePosterPath = movieArray[newMovie].poster_path;
+            var moviePosterURL = "http://image.tmdb.org/t/p/w154" + moviePosterPath;;
+            var rating = movieArray[newMovie].vote_average;
+            var overview = movieArray[newMovie].overview;
+            var releaseDate = movieArray[newMovie].release_date;
             console.log(movieTitle);
 
             // Appends movie poster to the appropriate div
@@ -115,6 +160,8 @@ $("#modalSubmit").on("click", function () {
             $(moviePoster).attr({"class": "image", "id": "movieposter"}).append("<img src='" + moviePosterURL + "'/>");
             $(movieDivCard).attr("class", "card").append($(moviePoster));
             $(movieContainer).append($(movieDivCard));
+
+            // If there moviePoster path is null, add placeholder image
 
             // Appends movie content to the appropriate div
             var movieContentDiv = $("<div>");
@@ -138,6 +185,5 @@ $("#modalSubmit").on("click", function () {
 
         }
     });
-
 
 })
