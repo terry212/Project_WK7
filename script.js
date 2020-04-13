@@ -8,15 +8,24 @@ var movieArray;
 var randomMovie;
 var newMovie;
 var page = Math.floor(Math.random() * 12) + 1;
+var movieContentDiv;
+var movieDivCard;
 
-// Function to stop modal from closing when clicked outside
+// Function checks if moodForm is filled out
+function validateSubmission() {
+    if ($("input[name='mood']").not(':checked')) {
+        $(".actions").prepend("<div id='error' style='color:red; text-align:center;'><h4>You must choose an option.</h4></div>");
+        return false;
+    } else {
+        return true;
+    }
+}
+
+// Stops modal from closing when clicked outside
 $("#WelcomeModal").modal({
     detachable: true,
     closable: false,
-    transition: 'fade up',
-    onApprove : function(){
-        $("#modalSubmit").attr("type", "button");
-    }
+    transition: 'fade up'
 });
 
 // On load, hide question 2 and the "enter" button and generate a "next" button
@@ -33,7 +42,7 @@ $(document).ready(function () {
     $("label").css("justify-content", "center");
 
     // When the "next" button is clicked, show the second question
-    // If no answers are selected, show error
+    // If no company answers are selected, show error
     $("#next").on("click", function () {
         if ($("input[name='company']").is(':checked')) {
             $("#error").remove();
@@ -42,6 +51,7 @@ $(document).ready(function () {
             $("hr").hide();
             $("#next").hide();
             $("#modalSubmit").show();
+            $("#modalSubmit").prop('disabled', true);
         } else {
             console.log("error");
             $("#error").remove();
@@ -49,7 +59,6 @@ $(document).ready(function () {
             $("hr").hide();
             $("#modalSubmit").hide();
             $(".actions").prepend("<div id='error' style='color:red; text-align:center;'><h4>You must choose an option.</h4></div>");
-
         }
     });
 })
@@ -58,6 +67,9 @@ $(document).ready(function () {
 $("input[type='radio']").click(function () {
     userInput = $("input[name='mood']:checked").val();
     userInput2 = $("input[name='company']:checked").val();
+    if ($("input[name='mood']").is(':checked')) {
+        $("#modalSubmit").prop('disabled', false);
+    }
     checkUserInput();
 })
 
@@ -137,6 +149,7 @@ function checkUserInput() {
 
 // After answering both questions, create movie cards and randomly generate 3 movies based on user input
 $("#modalSubmit").on("click", function () {
+    // Keep modal open when no radio buttons are clicked on moodForm
     $.ajax({
         url: movieQueryURL,
         method: "GET"
@@ -163,7 +176,7 @@ $("#modalSubmit").on("click", function () {
             console.log(movieTitle);
 
             // Appends movie poster to the appropriate div
-            var movieDivCard = $("<div>");
+            movieDivCard = $("<div>");
             var moviePoster = $("<div>");
             $(moviePoster).attr({ "class": "image", "id": "movieposter" }).append("<img src='" + moviePosterURL + "'/>");
             $(movieDivCard).attr("class", "card").append($(moviePoster));
@@ -172,7 +185,7 @@ $("#modalSubmit").on("click", function () {
             // If there moviePoster path is null, add placeholder image
 
             // Appends movie content to the appropriate div
-            var movieContentDiv = $("<div>");
+            movieContentDiv = $("<div>");
             $(movieContentDiv).attr({ "class": "content", "id": "movie-content" });
             $(movieDivCard).append($(movieContentDiv));
 
@@ -191,29 +204,39 @@ $("#modalSubmit").on("click", function () {
             // Create rating, append to movieDivCard
             $(movieDivCard).append("<div class='extra content' id='rating'><p>Rating: " + rating + "</p></div>");
 
+            // Create button for reading more info
+            var readMoreBtn = $("<button class='ui button readMore'>Read More</button>");
+            $(moviePoster).append($(readMoreBtn));
+
+
             // By default, hide description & rating
-            $(movieContentDiv).hide();
+            $(movieContentDiv).css("display", "none");
             $(".extra").hide();
+            $(readMoreBtn).css("display", "none");
 
             // On hover, show button to read more
             $(movieDivCard).mouseenter(function () {
                 $(this).css({
                     "opacity": 0.3,
                     "transition": ".5s ease"
-                }).append("<button class='ui button readMore'>Read More</button>");
+                });
+                $(this).find('button').css("display", "block");
+                // $(readMoreBtn).css("display", "block");
             }).mouseleave(function () {
                 $(this).css({
                     "opacity": 1,
                     "transition": ".5s ease"
                 });
-                $(".readMore").remove();
+                $(this).find('button').css("display", "none");
             });
-
-            $(".readMore").on("click", function () {
-                $(movieContentDiv).show();
-                $(".extra").show();
-            })
         }
+
+        // When readMore is clicked, show content
+        $(".readMore").on("click", function () {
+            $(movieDivCard).find($(movieContentDiv)).css("display", "block");
+            $(movieDivCard).find($(".extra")).css("display", "block");
+        })
+
     });
 
 })
@@ -223,7 +246,7 @@ $("#modalSubmit").on("click", function () {
 
 
 
-// Keep modal open when no radio buttons are clicked on moodForm
+
 
 // Add placeholder images for movies that don't have one
 
