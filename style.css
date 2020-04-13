@@ -29,6 +29,12 @@ img#gameImg {
     border: 10px solid black;
   }
 
+#movieDisplay{
+    max-width: 65vw;
+    max-height: 10vw;
+    overflow-x: scroll;
+
+}
 #foodDisplay, #drinkDisplay{
     max-height: 65vh;
     overflow-y: scroll;
