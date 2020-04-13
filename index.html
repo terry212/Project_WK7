@@ -1,203 +1,211 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js">
-    </script>
-    <title>Watch and Sip
-    </title>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <!-- Modal -->
-    <!-- needs to pop when user visits -->
-    <div class="ui modal" id="WelcomeModal">
-        <div class="header">
-            Welcome
-        </div>
-        <div class="content">
-            <div class="description">
-                tell us a little about you
-            </div>
-        </div>
-        <div class="actions">
-            <div class="ui form" id="moodForm">
-                <div class="grouped fields">
-                    <div class="field">
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="choices" tabindex="0" class="hidden">
-                            <label>Groovy</label>
+    <div class="landing-image">
+
+        <div class="container">
+            <div class="row">
+                <div class="image-holder"><a href="https://timansy.github.io/04_homework/docs/04/" target="_blank" rel="noopener noreferrer"><img src="game.png" id="gameImg" alt="triviagame" width="200px"></a></div>
+
+                <div class="col-lg-3"><img src="logo.png" alt="logo" width="250px"></div>
+                <div class="col-lg-9">
+                    <!-- use card-group if we want cards side by side -->
+                    <!-- use card-deck if we want cards side by side -->
+                    <div class="card-group" id="movieDisplay">
+                        <div class="card movie">
+                            <div class="card-body">
+                                <h4 class="card-title">Title</h4>
+                                <p class="card-text">Text</p>
+                            </div>
+                        </div>
+                        <div class="card movie">
+                            <div class="card-body">
+                                <h4 class="card-title">Title</h4>
+                                <p class="card-text">Text</p>
+                            </div>
+                        </div>
+                        <div class="card movie">
+                            <div class="card-body">
+                                <h4 class="card-title">Title</h4>
+                                <p class="card-text">Text</p>
+                            </div>
+                        </div>
+                        <div class="card movie">
+                            <div class="card-body">
+                                <h4 class="card-title">Title</h4>
+                                <p class="card-text">Text</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="field">
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="choices" tabindex="0" class="hidden">
-                            <label>Happy</label>
+                </div>
+                <div class="col-lg-12">
+                    <hr>
+                </div>
+                <div class="col-lg-7">
+                    <!-- main area -->
+                </div>
+                <div class="col-lg-5">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12" id="foodDisplay">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Title</h4>
+                                            <p class="card-text">Text</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Title</h4>
+                                            <p class="card-text">Text</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Title</h4>
+                                            <p class="card-text">Text</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Title</h4>
+                                            <p class="card-text">Text</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Title</h4>
+                                            <p class="card-text">Text</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Title</h4>
+                                            <p class="card-text">Text</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Title</h4>
+                                            <p class="card-text">Text</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Title</h4>
+                                            <p class="card-text">Text</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Title</h4>
+                                            <p class="card-text">Text</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Title</h4>
+                                            <p class="card-text">Text</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="field">
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="choices" tabindex="0" class="hidden">
-                            <label>Sad</label>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="choices" tabindex="0" class="hidden">
-                            <label>Scared</label>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="choices" tabindex="0" class="hidden">
-                            <label>Adventurous</label>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="choices" tabindex="0" class="hidden">
-                            <label>Mysterious</label>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="choices" tabindex="0" class="hidden">
-                            <label>You tell me!</label>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12" id="drinkDisplay">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Title</h4>
+                                            <p class="card-text">Text</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Title</h4>
+                                            <p class="card-text">Text</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Title</h4>
+                                            <p class="card-text">Text</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Title</h4>
+                                            <p class="card-text">Text</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Title</h4>
+                                            <p class="card-text">Text</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Title</h4>
+                                            <p class="card-text">Text</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Title</h4>
+                                            <p class="card-text">Text</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Title</h4>
+                                            <p class="card-text">Text</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Title</h4>
+                                            <p class="card-text">Text</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Title</h4>
+                                            <p class="card-text">Text</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <hr>
-            <div class="ui form" id="crowdForm">
-                <div class="grouped fields">
-                    <div class="field">
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="choices" tabindex="0" class="hidden">
-                            <label>Flying Solo</label>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="choices" tabindex="0" class="hidden">
-                            <label>With Spouse</label>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="choices" tabindex="0" class="hidden">
-                            <label>With Family</label>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="choices" tabindex="0" class="hidden">
-                            <label>With Friends</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <button type="submit" id="modalSubmit">Enter</button>
         </div>
-    </div>
-
-    <!-- main  -->
-    <div class="ui four column doubling stackable grid container" id="movieDisplay">
-        <div class="column">
-            <p>Movie</p>
-            <p></p>
-        </div>
-        <div class="column">
-            <p>Movie2</p>
-            <p></p>
-        </div>
-        <div class="column">
-            <p>movie 3</p>
-            <p></p>
-        </div>
-        <div class="column">
-            <p>movier 4</p>
-            <p></p>
-        </div>
-    </div>
-    
-        <div class="ui one column doubling stackable grid container" id="gameDisplay">
-            <div class="column">
-                <p>Game</p>
-                <p></p>
-            </div>
-            <div class="column">
-                <p>Game2</p>
-                <p></p>
-            </div>
-            <div class="column">
-                <p>Game3</p>
-                <p></p>
-            </div>
-            <div class="column">
-                <p>Game4</p>
-                <p></p>
-            </div>
-        </div>
-
-        <div class="ui one column doubling stackable grid container" id="drinkDisplay">
-            <div class="column">
-                <p>Drink</p>
-                <p></p>
-            </div>
-            <div class="column">
-                <p>Drink2</p>
-                <p></p>
-            </div>
-            <div class="column">
-                <p>Drink3</p>
-                <p></p>
-            </div>
-            <div class="column">
-                <p>Drink4</p>
-                <p></p>
-            </div>
-        </div>
-
-        <div class="ui one column doubling stackable grid container" id="foodDisplay">
-            <div class="column">
-                <p>Food</p>
-                <p></p>
-            </div>
-            <div class="column">
-                <p>Food</p>
-                <p></p>
-            </div>
-            <div class="column">
-                <p>Food</p>
-                <p></p>
-            </div>
-            <div class="column">
-                <p>Food4</p>
-                <p></p>
-            </div>
-        </div>
-
-       <button class="ui primary button">
-       Submit choices
-       </button>
-       <button class="ui primary button">
-       Start over
-       </button>
-
-    <!-- add source.js later -->
-    <script>
-        $('.ui.modal').modal('show');
-
-        $('#modalSubmit').click(function () {
-            $('.ui.modal').modal('hide');
-        });
-    </script>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
 </body>
 
 </html>
