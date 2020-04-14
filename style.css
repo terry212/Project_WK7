@@ -1,3 +1,45 @@
-body {
-    background-color: aqua;
+
+.landing-image {
+    background-image: url('inside-theater.png');
+    background-size: cover !important;
+    background-repeat: no-repeat;
+    height: 100vh;
+    padding: 1%;
+}
+
+div.movie{
+    padding-left: -3%;
+}
+
+.container { 
+    max-width: 80%;
+    border-radius: 20px;
+    padding: 1%;
+    background-color: rgba(255, 255, 255, 0.548);
+    height: 95vh;
+}
+
+.image-holder{
+    position: absolute; 
+    bottom: 4.5%;
+    left: 12%;
+}
+
+img#gameImg {
+    border: 10px solid black;
   }
+
+#movieDisplay{
+    max-width: 65vw;
+    max-height: 10vw;
+    overflow-x: scroll;
+
+}
+#foodDisplay, #drinkDisplay{
+    max-height: 65vh;
+    overflow-y: scroll;
+}
+
+body{
+    background-color: lightslategrey;
+}
