@@ -4,28 +4,17 @@ var drinkQueryURL;
 var mealQueryURL;
 var userInput;
 var lastRandom = [];
-var movieArray;
+var movieArray = [];
 var randomMovie;
 var newMovie;
 var page = Math.floor(Math.random() * 12) + 1;
 var movieContentDiv;
 var movieDivCard;
 
-// Function checks if moodForm is filled out
-function validateSubmission() {
-    if ($("input[name='mood']").not(':checked')) {
-        $(".actions").prepend("<div id='error' style='color:red; text-align:center;'><h4>You must choose an option.</h4></div>");
-        return false;
-    } else {
-        return true;
-    }
-}
-
 // Stops modal from closing when clicked outside
 $("#WelcomeModal").modal({
-    detachable: true,
-    closable: false,
-    transition: 'fade up'
+    backdrop: 'static',
+    keyboard: false
 });
 
 // On load, hide question 2 and the "enter" button and generate a "next" button
@@ -34,32 +23,21 @@ $(document).ready(function () {
     // By default, hide the second question and modalSubmit button
     $("#moodForm").hide();
     $("hr").hide();
-    $("#modalSubmit").hide();
+    $(".modal-footer").hide();
 
     // Create a "next" button to get to the next question
-    var nextBtn = $("<button class='ui button' id='next'><i class='fas fa-arrow-right'></i></button>");
-    $("#crowdForm").append($(nextBtn)).css("text-align", "center");
-    $("label").css("justify-content", "center");
+    var nextBtn = $("<button class='btn btn-light' type='button' id='next'><i class='fas fa-arrow-right'></i></button>");
+    $("#crowdForm").append($(nextBtn));
 
     // When the "next" button is clicked, show the second question
     // If no company answers are selected, show error
     $("#next").on("click", function () {
-        if ($("input[name='company']").is(':checked')) {
-            $("#error").remove();
-            $("#crowdForm").hide();
-            $("#moodForm").show().css("text-align", "center");
-            $("hr").hide();
-            $("#next").hide();
-            $("#modalSubmit").show();
-            $("#modalSubmit").prop('disabled', true);
-        } else {
-            console.log("error");
-            $("#error").remove();
-            $("#moodForm").hide();
-            $("hr").hide();
-            $("#modalSubmit").hide();
-            $(".actions").prepend("<div id='error' style='color:red; text-align:center;'><h4>You must choose an option.</h4></div>");
-        }
+        $("#error").remove();
+        $("#crowdForm").hide();
+        $("#moodForm").show();
+        $("hr").hide();
+        $("#next").hide();
+        $(".modal-footer").show();
     });
 })
 
@@ -67,9 +45,6 @@ $(document).ready(function () {
 $("input[type='radio']").click(function () {
     userInput = $("input[name='mood']:checked").val();
     userInput2 = $("input[name='company']:checked").val();
-    if ($("input[name='mood']").is(':checked')) {
-        $("#modalSubmit").prop('disabled', false);
-    }
     checkUserInput();
 })
 
@@ -119,6 +94,11 @@ function checkUserInput() {
             drinkQueryURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=shot";
             break;
 
+        case "inquisitive":
+            movieQueryURL = "https://api.themoviedb.org/3/discover/movie?with_genres=9648,80,27,53&api_key=e8f1cf6169288a814923ee8e5fe9e6f9&page=" + page;
+            drinkQueryURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Punch%20/%20Party%20Drink";
+            break;
+
         case "romantic":
             movieQueryURL = "https://api.themoviedb.org/3/discover/movie?with_genres=10749,35&api_key=e8f1cf6169288a814923ee8e5fe9e6f9&page=" + page;
             drinkQueryURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=Champagne_flute";
@@ -126,29 +106,37 @@ function checkUserInput() {
     }
 
     switch (userInput2) {
-        case "withFamily":
+        case "family":
             movieQueryURL = "https://api.themoviedb.org/3/discover/movie?with_genres=10751&ertification.lte=G&api_key=e8f1cf6169288a814923ee8e5fe9e6f9&page=" + page;
             drinkQueryURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic";
             mealQueryURL = "https://www.themealdb.com/api/json/v2/9973533/randomselection.php"
-            // must negate all other choices and go into family section
             break;
 
-        case "flyingSolo":
+        case "solo":
             mealQueryURL = "https://www.themealdb.com/api/json/v1/1/filter.php?c=dessert"
             break;
 
-        case "withFriends":
+        case "friends":
             mealQueryURL = "https://www.themealdb.com/api/json/v1/1/filter.php?c=side";
             break;
 
-        case "withSO":
+        case "spouse":
             mealQueryURL = "https://www.themealdb.com/api/json/v2/9973533/randomselection.php";
             break;
     }
 }
 
 // After answering both questions, create movie cards and randomly generate 3 movies based on user input
-$("#modalSubmit").on("click", function () {
+$("#submitButton").on("click", function () {
+    if (movieQueryURL == undefined) {
+        movieQueryURL = "https://api.themoviedb.org/3/discover/movie?with_genres=28,12&api_key=e8f1cf6169288a814923ee8e5fe9e6f9&page=" + page;
+        drinkQueryURL = "https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php";
+    }
+
+    if (mealQueryURL == undefined) {
+        mealQueryURL = "https://www.themealdb.com/api/json/v1/1/filter.php?c=dessert";
+    }
+
     // Keep modal open when no radio buttons are clicked on moodForm
     $.ajax({
         url: movieQueryURL,
@@ -156,9 +144,10 @@ $("#modalSubmit").on("click", function () {
     }).then(function (response) {
         movieArray = response.results;
 
+        // Create container for movie cards
         var movieContainer = $("<div>");
-        $(movieContainer).attr({ "class": "ui special link cards", "id": "movieCard" });
-        $("body").prepend($(movieContainer))
+        $(movieContainer).attr({ "class": "col-xs-12 card movie", "id": "movieDisplay" });
+        $("#movies").prepend($(movieContainer))
 
         for (i = 0; i < 4; i++) {
 
@@ -169,7 +158,7 @@ $("#modalSubmit").on("click", function () {
             // Assign variables for content
             var movieTitle = movieArray[newMovie].title;
             var moviePosterPath = movieArray[newMovie].poster_path;
-            var moviePosterURL = "http://image.tmdb.org/t/p/w154" + moviePosterPath;;
+            var moviePosterURL = "http://image.tmdb.org/t/p/w185" + moviePosterPath;;
             var rating = movieArray[newMovie].vote_average;
             var overview = movieArray[newMovie].overview;
             var releaseDate = movieArray[newMovie].release_date;
@@ -179,15 +168,15 @@ $("#modalSubmit").on("click", function () {
             movieDivCard = $("<div>");
             var moviePoster = $("<div>");
             $(moviePoster).attr({ "class": "image", "id": "movieposter" }).append("<img src='" + moviePosterURL + "'/>");
-            $(movieDivCard).attr("class", "card").append($(moviePoster));
+            $(movieDivCard).attr("class", "card col-sm-3").append($(moviePoster));
             $(movieContainer).append($(movieDivCard));
 
             // If there moviePoster path is null, add placeholder image
 
             // Appends movie content to the appropriate div
             movieContentDiv = $("<div>");
-            $(movieContentDiv).attr({ "class": "content", "id": "movie-content" });
-            $(movieDivCard).append($(movieContentDiv));
+            $(movieContentDiv).attr({ "class": "content", "id": "movie-content" + i + "" });
+            $(moviePoster).append($(movieContentDiv));
 
             // Create movie title header, append to movieContentDiv
             $(movieContentDiv).append("<a class='header' id='movie-title'>" + movieTitle + "</a>");
@@ -202,10 +191,10 @@ $("#modalSubmit").on("click", function () {
 
 
             // Create rating, append to movieDivCard
-            $(movieDivCard).append("<div class='extra content' id='rating'><p>Rating: " + rating + "</p></div>");
+            $(moviePoster).append("<div class='extra content' id='rating" + i + "'><p>Rating: " + rating + "</p></div>");
 
             // Create button for reading more info
-            var readMoreBtn = $("<button class='ui button readMore'>Read More</button>");
+            var readMoreBtn = $("<button class='readMore btn btn-light' type='button' id='readMore"+ i +"'>Read More</button>");
             $(moviePoster).append($(readMoreBtn));
 
 
@@ -216,27 +205,74 @@ $("#modalSubmit").on("click", function () {
 
             // On hover, show button to read more
             $(movieDivCard).mouseenter(function () {
-                $(this).css({
-                    "opacity": 0.3,
-                    "transition": ".5s ease"
-                });
                 $(this).find('button').css("display", "block");
-                // $(readMoreBtn).css("display", "block");
             }).mouseleave(function () {
-                $(this).css({
-                    "opacity": 1,
-                    "transition": ".5s ease"
-                });
                 $(this).find('button').css("display", "none");
             });
         }
-
-        // When readMore is clicked, show content
         $(".readMore").on("click", function () {
-            $(movieDivCard).find($(movieContentDiv)).css("display", "block");
-            $(movieDivCard).find($(".extra")).css("display", "block");
+            switch ($(this).attr('id')) {
+                case "readMore0":
+                    if ($('#movie-content0').css('display') == "none") {
+                        $('#movie-content0').css("display", "block");
+                        $("#rating0").show();
+                        $(this).text("Read Less");
+                    } else {
+                        $('#movie-content0').css("display", "none");
+                        $(".extra").hide();
+                        $(this).text("Read More");
+                    }
+                break;
+                case "readMore1":
+                    if ($('#movie-content1').css('display') == "none") {
+                        $('#movie-content1').css("display", "block");
+                        $("#rating1").show();
+                        $(this).text("Read Less");
+                    } else {
+                        $('#movie-content1').css("display", "none");
+                        $(".extra").hide();
+                        $(this).text("Read More");
+                    }
+                break;
+                case "readMore2":
+                    if ($('#movie-content2').css('display') == "none") {
+                        $('#movie-content2').css("display", "block");
+                        $("#rating2").show();
+                        $(this).text("Read Less");
+                    } else {
+                        $('#movie-content2').css("display", "none");
+                        $(".extra").hide();
+                        $(this).text("Read More");
+                    }
+                break;
+                case "readMore3":
+                    if ($('#movie-content3').css('display') == "none") {
+                        $('#movie-content3').css("display", "block");
+                        $("#rating3").show();
+                        $(this).text("Read Less");
+                    } else {
+                        $('#movie-content3').css("display", "none");
+                        $(".extra").hide();
+                        $(this).text("Read More");
+                    }
+                break;
+            }
+
+            
         })
 
+
+        // When readMore is clicked, show content
+        // $(".readMore").on("click", function () {
+        //     $('#movie-content' + i).css("display", "block");
+        //     var testid = '#movie-content' + i;
+        //     var test = $(testid);
+        //     $('#movie-content' + i).css("display", "block");
+        //     // $(this).find($(movieContentDiv)).css("display", "block");
+        //     // $(this).find($(".extra")).css("display", "block");
+        // })
+
+        $("#WelcomeModal").modal("hide");
     });
 
 })
