@@ -1,0 +1,83 @@
+
+.landing-image {
+    background-image: url('inside-theater.png');
+    background-size: cover !important;
+    background-repeat: no-repeat;
+    height: 100vh;
+    padding: 1%;
+}
+
+div.movie{
+    padding-left: -3%;
+}
+
+.container { 
+    max-width: 80%;
+    border-radius: 20px;
+    padding: 1%;
+    background-color: rgba(255, 255, 255, 0.548);
+    height: 95vh;
+}
+
+.image-holder{
+    position: absolute; 
+    bottom: 4.5%;
+    left: 12%;
+}
+
+img#gameImg {
+    border: 10px solid black;
+  }
+
+#movieDisplay{
+    max-width: 65vw;
+
+}
+#foodDisplay, #drinkDisplay{
+    max-height: 65vh;
+    overflow-y: scroll;
+}
+
+body{
+    background-color: lightslategrey;
+}
+
+.content{
+
+    background-color:gray;
+    color: black;
+    
+
+}
+.extra{
+    background-color: rgb(212, 212, 207);
+    color: black;
+}
+
+#drink-content{
+    background-color: rgb(212, 212, 207);
+}
+
+#food-content{
+    background-color: rgb(212, 212, 207);
+}
+
+#WelcomeModal .modal-title {
+    text-align: center;
+    margin: auto;
+    font-family: 'Courgette', cursive;
+    font-size: 40pt;
+}
+
+.text-center>img {
+    margin: auto;
+    padding: .25rem;
+    max-width: 50%;
+    height: auto;
+    display: block;
+}
+
+.card {
+    flex-direction: row;
+    background-color: transparent;
+}
