@@ -107,7 +107,7 @@ function checkUserInput() {
 
     switch (userInput2) {
         case "family":
-            movieQueryURL = "https://api.themoviedb.org/3/discover/movie?with_genres=10751&ertification.lte=G&api_key=e8f1cf6169288a814923ee8e5fe9e6f9&page=" + page;
+            movieQueryURL = "https://api.themoviedb.org/3/discover/movie?with_genres=10751&certification.lte=G&api_key=e8f1cf6169288a814923ee8e5fe9e6f9&page=" + page;
             drinkQueryURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic";
             mealQueryURL = "https://www.themealdb.com/api/json/v2/9973533/randomselection.php"
             break;
@@ -158,11 +158,18 @@ $("#submitButton").on("click", function () {
             // Assign variables for content
             var movieTitle = movieArray[newMovie].title;
             var moviePosterPath = movieArray[newMovie].poster_path;
-            var moviePosterURL = "http://image.tmdb.org/t/p/w185" + moviePosterPath;;
+            var moviePosterURL;
             var rating = movieArray[newMovie].vote_average;
             var overview = movieArray[newMovie].overview;
             var releaseDate = movieArray[newMovie].release_date;
             console.log(movieTitle);
+
+            // If there moviePoster path is null, add placeholder image
+            if (moviePosterPath !== null) {
+                moviePosterURL = "http://image.tmdb.org/t/p/w185" + moviePosterPath;
+            } else {
+                moviePosterURL = "./Assets/Images/missingposter.png";
+            }
 
             // Appends movie poster to the appropriate div
             movieDivCard = $("<div>");
@@ -170,8 +177,6 @@ $("#submitButton").on("click", function () {
             $(moviePoster).attr({ "class": "image", "id": "movieposter" }).append("<img src='" + moviePosterURL + "'/>");
             $(movieDivCard).attr("class", "card col-sm-3").append($(moviePoster));
             $(movieContainer).append($(movieDivCard));
-
-            // If there moviePoster path is null, add placeholder image
 
             // Appends movie content to the appropriate div
             movieContentDiv = $("<div>");
@@ -260,32 +265,6 @@ $("#submitButton").on("click", function () {
 
             
         })
-
-
-        // When readMore is clicked, show content
-        // $(".readMore").on("click", function () {
-        //     $('#movie-content' + i).css("display", "block");
-        //     var testid = '#movie-content' + i;
-        //     var test = $(testid);
-        //     $('#movie-content' + i).css("display", "block");
-        //     // $(this).find($(movieContentDiv)).css("display", "block");
-        //     // $(this).find($(".extra")).css("display", "block");
-        // })
-
         $("#WelcomeModal").modal("hide");
     });
-
 })
-
-
-// On readMore button click, expand card to show description & rating
-
-
-
-
-
-// Add placeholder images for movies that don't have one
-
-// Function to clear all choices when startOver button is clicked
-
-// Test all possibilities

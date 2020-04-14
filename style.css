@@ -31,8 +31,6 @@ img#gameImg {
 
 #movieDisplay{
     max-width: 65vw;
-    max-height: 10vw;
-    overflow-x: scroll;
 
 }
 #foodDisplay, #drinkDisplay{
@@ -42,4 +40,44 @@ img#gameImg {
 
 body{
     background-color: lightslategrey;
+}
+
+.content{
+
+    background-color:gray;
+    color: black;
+    
+
+}
+.extra{
+    background-color: rgb(212, 212, 207);
+    color: black;
+}
+
+#drink-content{
+    background-color: rgb(212, 212, 207);
+}
+
+#food-content{
+    background-color: rgb(212, 212, 207);
+}
+
+#WelcomeModal .modal-title {
+    text-align: center;
+    margin: auto;
+    font-family: 'Courgette', cursive;
+    font-size: 40pt;
+}
+
+.text-center>img {
+    margin: auto;
+    padding: .25rem;
+    max-width: 50%;
+    height: auto;
+    display: block;
+}
+
+.card {
+    flex-direction: row;
+    background-color: transparent;
 }
