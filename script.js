@@ -71,44 +71,44 @@ function checkUserInput() {
 
         case "thoughtful":
             movieQueryURL = "https://api.themoviedb.org/3/discover/movie?with_genres=99,36,10752&api_key=e8f1cf6169288a814923ee8e5fe9e6f9&page=" + page;
-            drinkQueryURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Ordinary_Drink";
+            drinkQueryURL = "https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php";
             break;
 
         case "sad":
             movieQueryURL = "https://api.themoviedb.org/3/discover/movie?with_genres=18&api_key=e8f1cf6169288a814923ee8e5fe9e6f9&page=" + page;
-            drinkQueryURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=blue";
+            drinkQueryURL = "https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php";
             break;
 
         case "supernatural":
             movieQueryURL = "https://api.themoviedb.org/3/discover/movie?with_genres=14,878&api_key=e8f1cf6169288a814923ee8e5fe9e6f9&page=" + page;
-            drinkQueryURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?f=z";
+            drinkQueryURL = "https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php";
             break;
 
         case "happy":
             movieQueryURL = "https://api.themoviedb.org/3/discover/movie?with_genres=35&api_key=e8f1cf6169288a814923ee8e5fe9e6f9&page=" + page;
-            drinkQueryURL = "https://www.thecocktaildb.com/api/json/v1/1/popular.php";
+            drinkQueryURL = "https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php";
             break;
 
         case "angry":
             movieQueryURL = "https://api.themoviedb.org/3/discover/movie?with_genres=35&api_key=e8f1cf6169288a814923ee8e5fe9e6f9&page=" + page;
-            drinkQueryURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=shot";
+            drinkQueryURL = "https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php";
             break;
 
         case "inquisitive":
             movieQueryURL = "https://api.themoviedb.org/3/discover/movie?with_genres=9648,80,27,53&api_key=e8f1cf6169288a814923ee8e5fe9e6f9&page=" + page;
-            drinkQueryURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Punch%20/%20Party%20Drink";
+            drinkQueryURL = "https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php";
             break;
 
         case "romantic":
             movieQueryURL = "https://api.themoviedb.org/3/discover/movie?with_genres=10749,35&api_key=e8f1cf6169288a814923ee8e5fe9e6f9&page=" + page;
-            drinkQueryURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=Champagne_flute";
+            drinkQueryURL = "https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php";
             break;
     }
 
     switch (userInput2) {
         case "family":
             movieQueryURL = "https://api.themoviedb.org/3/discover/movie?with_genres=10751&certification.lte=G&api_key=e8f1cf6169288a814923ee8e5fe9e6f9&page=" + page;
-            drinkQueryURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic";
+            drinkQueryURL = "https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php?";
             mealQueryURL = "https://www.themealdb.com/api/json/v2/9973533/randomselection.php"
             break;
 
@@ -137,6 +137,13 @@ $("#submitButton").on("click", function () {
         mealQueryURL = "https://www.themealdb.com/api/json/v1/1/filter.php?c=dessert";
     }
 
+    generateMovie();
+    generateFood();
+    generateDrink();
+})
+
+
+function generateMovie(){
     // Keep modal open when no radio buttons are clicked on moodForm
     $.ajax({
         url: movieQueryURL,
@@ -267,4 +274,140 @@ $("#submitButton").on("click", function () {
         })
         $("#WelcomeModal").modal("hide");
     });
-})
+}
+
+function generateFood(){
+
+    $.ajax({
+        url: mealQueryURL,
+        method: "GET"
+    }).then(function(response){
+        console.log(response);
+
+        var foodContainer = $('#food');
+
+        for(var i = 0; i < 4; i++){
+            
+            var foodCard =`<div class="ui special link cards" id="foodCard">
+                            <div class="card">
+                                <div class="image" id="foodImage">
+                                    <img src="${response.meals[i].strMealThumb}">
+                                </div>
+                                <div class="content" id="food-content">
+                                    <p class="header" id="food-name">${response.meals[i].strMeal}</p>
+                                </div>
+                            </div>
+                        </div>`
+
+            foodContainer.append(foodCard);
+        }
+    }); 
+
+}
+
+function generateDrink(){
+
+    var drinkContainer = $('#drinks');
+
+    $.ajax({
+        url: drinkQueryURL,
+        method: "GET"
+    }).then(function(response){
+        console.log(response);
+
+        
+        for(var i = 0; i < 4; i++){
+            var drinkIn = '';
+            // debugger;
+            // for(var k = 0; k < 15; k++){
+            //     var n = 1;
+            //     if(response.drinks[i].strIngredient[n] != null){
+            //         drinkIn = drinkIn + ', ' + response.drinks[i].strIngredient[n];
+            //     }
+            //     n++;
+            // }
+
+            if(response.drinks[i].strIngredient1 != null){
+                drinksIn = response.drinks[i].strIngredient1;
+            }
+            
+            if(response.drinks[i].strIngredient2 != null){
+                drinksIn = drinksIn + response.drinks[i].strIngredient2;
+            }
+            
+            if(response.drinks[i].strIngredient3 != null){
+                drinksIn = drinksIn + response.drinks[i].strIngredient3;
+            }
+            
+            if(response.drinks[i].strIngredient4 != null){
+                drinksIn = drinksIn + response.drinks[i].strIngredient4;
+            }
+            
+            if(response.drinks[i].strIngredient5 != null){
+                drinksIn = drinksIn + response.drinks[i].strIngredient5;
+            }
+            
+            if(response.drinks[i].strIngredient6 != null){
+                drinksIn = drinksIn + response.drinks[i].strIngredient6;
+            }
+            
+            if(response.drinks[i].strIngredient7 != null){
+                drinksIn = drinksIn + response.drinks[i].strIngredient7;
+            }
+            
+            if(response.drinks[i].strIngredient8 != null){
+                drinksIn = drinksIn + response.drinks[i].strIngredient8;
+            }
+            
+            if(response.drinks[i].strIngredient9 != null){
+                drinksIn = drinksIn + response.drinks[i].strIngredient9;
+            }
+            
+            if(response.drinks[i].strIngredient10 != null){
+                drinksIn = drinksIn + response.drinks[i].strIngredient10;
+            }
+            
+            if(response.drinks[i].strIngredient11 != null){
+                drinksIn = drinksIn + response.drinks[i].strIngredient11;
+            }
+            
+            if(response.drinks[i].strIngredient12 != null){
+                drinksIn = drinksIn + response.drinks[i].strIngredient12;
+            }
+            
+            if(response.drinks[i].strIngredient13 != null){
+                drinksIn = drinksIn + response.drinks[i].strIngredient13;
+            }
+            
+            if(response.drinks[i].strIngredient14 != null){
+                drinksIn = drinksIn + response.drinks[i].strIngredient14;
+            }
+            
+            if(response.drinks[i].strIngredient15 != null){
+                drinksIn = drinksIn + response.drinks[i].strIngredient15;
+            }
+
+            var drinkCard = `<div class="ui special link cards" id="drinkCard">
+                            <div class="card">
+                                <div class="image" id="drinkImage">
+                                    <img src="${response.drinks[i].strDrinkThumb}">
+                                </div>
+                                <div class="content" id="drink-content">
+                                    <a class="header" id="drink-name">${response.drinks[i].strDrink}</a>
+                                    <div class="meta">
+                                        <span class="type">${response.drinks[i].strAlcoholic}</span>
+                                    </div>
+                                    <div class="description" id="drink-ingredients">
+                                        Ingredients: ${drinksIn}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>`
+
+            
+
+            drinkContainer.append(drinkCard);
+        }
+    }); 
+
+}
