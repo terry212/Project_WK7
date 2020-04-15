@@ -1,3 +1,5 @@
+
+/* Change to .content */
 #movie-content{
 
     background-color:gray;
@@ -6,7 +8,7 @@
 
 }
 
-
+/* Change to .extra */
 #rating{
     background-color: rgb(212, 212, 207);
     color: black;

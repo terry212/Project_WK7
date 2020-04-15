@@ -2,13 +2,21 @@
 /* font-family: 'Marko One', serif; */
 /* font-family: 'Playball', cursive; */
 
-#WelcomeModal .header {
+#WelcomeModal .modal-title {
     text-align: center;
     margin: auto;
     font-family: 'Courgette', cursive;
     font-size: 40pt;
 }
 
-#WelcomeModal #logoImg {
+.text-center>img {
     margin: auto;
+    padding: .25rem;
+    max-width: 50%;
+    height: auto;
+    display: block;
 }
+
+/* i.icon {
+    font-size: 1.3em;
+} */

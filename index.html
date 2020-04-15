@@ -1,249 +1,348 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js">
-    </script>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="modalStyle.css">
     <link
         href="https://fonts.googleapis.com/css?family=Courgette|Marko+One|Montserrat:400,500,600|Playball&display=swap"
         rel="stylesheet">
-    <title>Watch and Sip
-    </title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-xVVam1KS4+Qt2OrFa+VdRUoXygyKIuNWUUUBZYv+n27STsJ7oDOHJgfF0bNKLMJF" crossorigin="anonymous">
+    <title>Watch and Sip</title>
 </head>
 
 <body>
     <!-- Modal -->
     <!-- needs to pop when user visits -->
-    <div class="ui modal" id="WelcomeModal">
-        <div class="header">
-            <img class="ui small image" id="logoImg" src="./Assets/Images/Watch-n-Sip.png" alt="Watch and Sip"> Watch 'n
-            Sip
-        </div>
-        <div class="content">
-            <div class="description">
-                tell us a little about you
-            </div>
-        </div>
-        <div class="actions">
-            <div class="ui form" id="moodForm">
-                <div class="grouped fields">
-                    <div class="field">
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="choices" tabindex="0" class="hidden">
-                            <label>Groovy</label>
-                        </div>
+    <div class="modal fade" id="WelcomeModal" tabindex="-1" role="dialog" aria-labelledby="WelcomeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="text-center">
+                        <img src="./Assets/Images/logo.png" alt="Watch and Sip">
                     </div>
-                    <div class="field">
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="choices" tabindex="0" class="hidden">
-                            <label>Happy</label>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="choices" tabindex="0" class="hidden">
-                            <label>Sad</label>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="choices" tabindex="0" class="hidden">
-                            <label>Scared</label>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="choices" tabindex="0" class="hidden">
-                            <label>Adventurous</label>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="choices" tabindex="0" class="hidden">
-                            <label>Mysterious</label>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="choices" tabindex="0" class="hidden">
-                            <label>You tell me!</label>
-                        </div>
-                    </div>
+                    <!-- <h5 class="modal-title">Watch 'n Sip</h5> -->
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <fieldset class="form-group">
+                            <div class="row" id="crowdForm">
+                                <legend class="col-form-label col-sm-5 pt-0">Who are you with?</legend>
+                                <div class="col-sm-7">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="company" value="solo"
+                                            checked>
+                                        <label class="form-check-label">
+                                            <i class="large fighter jet icon"> </i> Flying Solo
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="company" value="spouse">
+                                        <label class="form-check-label">
+                                            <i class="users icon"></i>With Spouse
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="company" value="family">
+                                        <label class="form-check-label">
+                                            With Family
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="company" value="friends">
+                                        <label class="form-check-label">
+                                            With Friends
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row" id="moodForm">
+                                <legend class="col-form-label col-sm-5 pt-0">What is the mood for today?</legend>
+                                <div class="col-sm-7">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="mood" value="excited"
+                                            checked>
+                                        <label class="form-check-label">
+                                            Excited
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="mood" value="thoughtful">
+                                        <label class="form-check-label">
+                                            Thoughtful
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="mood" value="sad">
+                                        <label class="form-check-label">
+                                            Sad
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="mood" value="supernatural">
+                                        <label class="form-check-label">
+                                            Supernatural
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="mood" value="happy">
+                                        <label class="form-check-label">
+                                            Happy
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="mood" value="angry">
+                                        <label class="form-check-label">
+                                            Angry
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="mood" value="inquisitive">
+                                        <label class="form-check-label">
+                                            Inquisitive
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="mood" value="romantic">
+                                        <label class="form-check-label">
+                                            Romantic
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="submitButton" class="btn btn-primary">SUBMIT</button>
                 </div>
             </div>
-            <hr>
-            <div class="ui form" id="crowdForm">
-                <div class="grouped fields">
-                    <div class="field">
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="choices" tabindex="0" class="hidden">
-                            <label>Flying Solo</label>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="choices" tabindex="0" class="hidden">
-                            <label>With Spouse</label>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="choices" tabindex="0" class="hidden">
-                            <label>With Family</label>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="choices" tabindex="0" class="hidden">
-                            <label>With Friends</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <button type="submit" id="modalSubmit">Enter</button>
         </div>
     </div>
 
-    <!-- main  -->
-
-
-    <div class="ui stackable center aligned page padded grid">
-
-        <!--Movie Display-->
-        <div class="four column row" id="movieDisplay">
-            <div class="column">
-                <div class="ui fluid card">
-                    <img src="Assets/Images/sample_image.jpg"></img>
+    <div class="landing-image">
+        <div class="container">
+            <div class="row">
+                <div class="image-holder"><a href="https://timansy.github.io/04_homework/docs/04/" target="_blank"
+                        rel="noopener noreferrer"><img src="game.png" id="gameImg" alt="triviagame" width="200px"></a>
                 </div>
-            </div>
-            <div class="column">
-                <div class="ui fluid card">
-                    <img src="Assets/Images/sample_image.jpg"></img>
+                <div class="col-lg-3"><img src="logo.png" alt="logo" width="250px"></div>
+                <div class="col-lg-9 col-xs-12" id="movies">
+                    <!-- use card-group if we want cards side by side -->
+                    <!-- use card-deck if we want cards side by side -->
+                    <!-- CHECK <div class="card-group" id="movieDisplay">
+
+                        <div class="card movie">
+                            <div class="card-body">
+                                <h4 class="card-title">Title</h4>
+                                <p class="card-text">Text</p>
+                            </div>
+                        </div>
+                    </div> -->
                 </div>
-            </div>
-            <div class="column">
-                <div class="ui fluid card">
-                    <img src="Assets/Images/sample_image.jpg"></img>
+
+                <div class="col-lg-9 col-xs-12" id="food">
+                    <!-- use card-group if we want cards side by side -->
+                    <!-- use card-deck if we want cards side by side -->
+                    <!-- CHECK <div class="card-group" id="movieDisplay">
+
+                        <div class="card movie">
+                            <div class="card-body">
+                                <h4 class="card-title">Title</h4>
+                                <p class="card-text">Text</p>
+                            </div>
+                        </div>
+                    </div> -->
                 </div>
-            </div>
-            <div class="column">
-                <div class="ui fluid card">
-                    <img src="Assets/Images/sample_image.jpg"></img>
+
+                <div class="col-lg-9 col-xs-12" id="drinks">
+                    <!-- use card-group if we want cards side by side -->
+                    <!-- use card-deck if we want cards side by side -->
+                    <!-- CHECK <div class="card-group" id="movieDisplay">
+
+                        <div class="card movie">
+                            <div class="card-body">
+                                <h4 class="card-title">Title</h4>
+                                <p class="card-text">Text</p>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="col-lg-12">
+                    <hr>
+                </div>
+                <div class="col-lg-7">
+                    <!-- main area -->
+                </div>
+                <div class="col-lg-5">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12" id="foodDisplay">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Title</h4>
+                                            <p class="card-text">Text</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Title</h4>
+                                            <p class="card-text">Text</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Title</h4>
+                                            <p class="card-text">Text</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Title</h4>
+                                            <p class="card-text">Text</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Title</h4>
+                                            <p class="card-text">Text</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Title</h4>
+                                            <p class="card-text">Text</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Title</h4>
+                                            <p class="card-text">Text</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Title</h4>
+                                            <p class="card-text">Text</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Title</h4>
+                                            <p class="card-text">Text</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Title</h4>
+                                            <p class="card-text">Text</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12" id="drinkDisplay">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Title</h4>
+                                            <p class="card-text">Text</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Title</h4>
+                                            <p class="card-text">Text</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Title</h4>
+                                            <p class="card-text">Text</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Title</h4>
+                                            <p class="card-text">Text</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Title</h4>
+                                            <p class="card-text">Text</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Title</h4>
+                                            <p class="card-text">Text</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Title</h4>
+                                            <p class="card-text">Text</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Title</h4>
+                                            <p class="card-text">Text</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Title</h4>
+                                            <p class="card-text">Text</p>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Title</h4>
+                                            <p class="card-text">Text</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <!--food Display-->
-        <div class="three column row" id="foodGamesDrinks">
-            <div class="four wide column" id="foodDisplay">
-                <div class="row">
-                    <div class="ui fluid card">
-                        <img src="Assets/Images/sample_image.jpg"></img>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="ui fluid card">
-                        <img src="Assets/Images/sample_image.jpg"></img>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="ui fluid card">
-                        <img src="Assets/Images/sample_image.jpg"></img>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="ui fluid card">
-                        <img src="Assets/Images/sample_image.jpg"></img>
-                    </div>
-                </div>
-            </div>
-            <!--Buttons and Games Display-->
-            <div class="eight wide column" id="gamesAndbuttons">
-                <div class="row" id="buttonDisplay">
-                    <div class="ui grid">
-                        <div class="eight wide column">
-                            <div class="ui fluid card">
-                                <button class="ui primary button">
-                                    Submit choices
-                                </button>
-                            </div>
-                        </div>
-                        <div class="eight wide column">
-                            <div class="ui fluid card">
-                                <button class="ui primary button">
-                                    Start over
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row" id="gamesDisplay">
-                    <div class="ui grid">
-                        <div class="four wide column">
-                            <div class="ui fluid card">
-                                <img src="Assets/Images/sample_image.jpg"></img>
-                            </div>
-                        </div>
-                        <div class="four wide column">
-                            <div class="ui fluid card">
-                                <img src="Assets/Images/sample_image.jpg"></img>
-                            </div>
-                        </div>
-                        <div class="four wide column">
-                            <div class="ui fluid card">
-                                <img src="Assets/Images/sample_image.jpg"></img>
-                            </div>
-                        </div>
-                        <div class="four wide column">
-                            <div class="ui fluid card">
-                                <img src="Assets/Images/sample_image.jpg"></img>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="four wide column" id="drinkDisplay">
-                <div class="row">
-                    <div class="ui fluid card">
-                        <img src="Assets/Images/sample_image.jpg"></img>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="ui fluid card">
-                        <img src="Assets/Images/sample_image.jpg"></img>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="ui fluid card">
-                        <img src="Assets/Images/sample_image.jpg"></img>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="ui fluid card">
-                        <img src="Assets/Images/sample_image.jpg"></img>
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </div>
-
-    <!-- add source.js later -->
-    <script>
-        $('.ui.modal').modal('show');
-
-        $('#modalSubmit').click(function () {
-            $('.ui.modal').modal('hide');
-        });
+    
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.js"
+    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
     </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <!-- Optional JavaScript -->
+    <script src="script.js"></script>
+    <!-- Testing script -->
+    <script>
+        $('#WelcomeModal').modal('show');
+    </script>
+
 </body>
 
 </html>
