@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css">
+    <link rel="stylesheet" href="card.css" />
+    <title>Document</title>
+</head>
+
+<body>
+    <!--movie card-->
+    <div class="ui special link cards" id="movieCard">
+        <div class="card">
+            <div class="image" id="movieposter">
+                <img src="Assets/Images/movie_sample.jfif">
+            </div>
+            <div class="content" id="movie-content">
+                <a class="header" id="movie-title">Fast & Furious</a>
+                <div class="meta">
+                    <span class="date">Release Date: 2019-08-01</span>
+                </div>
+                <div class="description" id="movie-description">
+                    Ever since US Diplomatic Security Service Agent Hobbs and lawless outcast Shaw first faced off, they
+                    just have swapped smacks and bad words. But when cyber-genetically enhanced anarchist Brixton's
+                    ruthless actions threaten the future of humanity, both join forces to defeat him. (A spin-off of
+                    “The Fate of the Furious,” focusing on Johnson's Luke Hobbs and Statham's Deckard Shaw.)
+                </div>
+            </div>
+            <div class="extra content" id="rating">
+                <p>Rating: 6.7<p>
+            </div>
+        </div>
+    </div>
+
+    <!--Drink card-->
+
+    <div class="ui special link cards" id="drinkCard">
+        <div class="card">
+            <div class="image" id="drinkImage">
+                <img src="Assets/Images/Drink_sample.jpg">
+            </div>
+            <div class="content" id="drink-content">
+                <a class="header" id="drink-name">Gin Sling</a>
+                <div class="meta">
+                    <span class="type">Alcoholic</span>
+                </div>
+                <div class="description" id="drink-ingredients">
+                    Ingredients: Gin,Lemon,Powdered sugar,Water,Orange peel
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--food card-->
+    <div class="ui special link cards" id="foodCard">
+        <div class="card">
+            <div class="image" id="foodImage">
+                <img src="Assets/Images/Food_sample.jpg">
+            </div>
+            <div class="content" id="food-content">
+                <a class="header" id="food-name">Pumpkin Pie</a>
+            </div>
+            <!-- description can be with or with out measurements -->
+            <!-- a more details button can be implimented to show a youtube video or instructions -->
+            <div class="description" id="food-ingredients">
+                Ingredients: Pumpkin, Shortcrust Pastry, Plain Flour, Caster Sugar, Salt, Nutmeg, Cinnamon, Eggs,
+                Butter, Milk, Icing sugar
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="card.js"></script>
+</body>
+
+</html>

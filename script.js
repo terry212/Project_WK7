@@ -135,6 +135,10 @@ $("#submitButton").on("click", function () {
 
 
 function generateMovie(){
+<<<<<<< HEAD
+=======
+    // Keep modal open when no radio buttons are clicked on moodForm
+>>>>>>> 3e18dc43ec82e8be45e8e05c7f205d038be32e4b
     $.ajax({
         url: movieQueryURL,
         method: "GET"
