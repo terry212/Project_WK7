@@ -69,7 +69,7 @@ body{
     font-size: 40pt;
 }
 
-.text-center>img {
+/* .text-center>img {
     margin: auto;
     padding: .25rem;
     max-width: 50%;
@@ -80,5 +80,5 @@ body{
 .card {
     flex-direction: row;
     background-color: transparent;
-}
+} */
 

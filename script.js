@@ -288,16 +288,14 @@ function generateFood(){
 
         for(var i = 0; i < 4; i++){
             
-            var foodCard =`<div class="ui special link cards" id="foodCard">
-                            <div class="card">
-                                <div class="image" id="foodImage">
-                                    <img src="${response.meals[i].strMealThumb}">
-                                </div>
-                                <div class="content" id="food-content">
-                                    <p class="header" id="food-name">${response.meals[i].strMeal}</p>
+            var foodCard =`
+                            <div class="card col-md">
+                                <img class="card-img-top" src="${response.meals[i].strMealThumb}" alt="${response.meals[i].strMeal}">
+                                <div class="card-body" id="food-content">
+                                    <h5 class="card-title" id="food-name">${response.meals[i].strMeal}</h5>
                                 </div>
                             </div>
-                        </div>`
+                        `
 
             foodContainer.append(foodCard);
         }
@@ -387,22 +385,17 @@ function generateDrink(){
                 drinksIn = drinksIn + response.drinks[i].strIngredient15;
             }
 
-            var drinkCard = `<div class="ui special link cards" id="drinkCard">
-                            <div class="card">
-                                <div class="image" id="drinkImage">
-                                    <img src="${response.drinks[i].strDrinkThumb}">
-                                </div>
-                                <div class="content" id="drink-content">
-                                    <a class="header" id="drink-name">${response.drinks[i].strDrink}</a>
+            var drinkCard = `<div class="card col-md">
+                                <img class="card-img-top" src="${response.drinks[i].strDrinkThumb}" alt="${response.drinks[i].strDrink}">
+                                <div class="card-body" id="drink-content">
+                                    <h5 class="card-title" id="drink-name">${response.drinks[i].strDrink}</h5>
                                     <div class="meta">
                                         <span class="type">${response.drinks[i].strAlcoholic}</span>
                                     </div>
-                                    <div class="description" id="drink-ingredients">
-                                        Ingredients: ${drinksIn}
-                                    </div>
+                                    <p class="card-text" id="drink-ingredients"> Ingredients: ${drinksIn}</p>
                                 </div>
-                            </div>
-                        </div>`
+                                
+                            </div>`
 
             
 
