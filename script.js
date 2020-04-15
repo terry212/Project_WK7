@@ -1,15 +1,14 @@
 // Assign all necessary global variables
 var movieQueryURL;
-var drinkQueryURL;
 var mealQueryURL;
 var userInput;
+var userInput2;
 var lastRandom = [];
 var movieArray = [];
 var randomMovie;
 var newMovie;
 var page = Math.floor(Math.random() * 12) + 1;
-var movieContentDiv;
-var movieDivCard;
+var drinkQueryURL = "https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php";
 
 // Stops modal from closing when clicked outside
 $("#WelcomeModal").modal({
@@ -65,43 +64,35 @@ function checkUserInput() {
     switch (userInput) {
         case "excited":
             movieQueryURL = "https://api.themoviedb.org/3/discover/movie?with_genres=28,12&api_key=e8f1cf6169288a814923ee8e5fe9e6f9&page=" + page;
-            drinkQueryURL = "https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php";
             console.log("excited clicked");
             break;
 
         case "thoughtful":
             movieQueryURL = "https://api.themoviedb.org/3/discover/movie?with_genres=99,36,10752&api_key=e8f1cf6169288a814923ee8e5fe9e6f9&page=" + page;
-            drinkQueryURL = "https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php";
             break;
 
         case "sad":
             movieQueryURL = "https://api.themoviedb.org/3/discover/movie?with_genres=18&api_key=e8f1cf6169288a814923ee8e5fe9e6f9&page=" + page;
-            drinkQueryURL = "https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php";
             break;
 
         case "supernatural":
             movieQueryURL = "https://api.themoviedb.org/3/discover/movie?with_genres=14,878&api_key=e8f1cf6169288a814923ee8e5fe9e6f9&page=" + page;
-            drinkQueryURL = "https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php";
             break;
 
         case "happy":
             movieQueryURL = "https://api.themoviedb.org/3/discover/movie?with_genres=35&api_key=e8f1cf6169288a814923ee8e5fe9e6f9&page=" + page;
-            drinkQueryURL = "https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php";
             break;
 
         case "angry":
             movieQueryURL = "https://api.themoviedb.org/3/discover/movie?with_genres=35&api_key=e8f1cf6169288a814923ee8e5fe9e6f9&page=" + page;
-            drinkQueryURL = "https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php";
             break;
 
         case "inquisitive":
             movieQueryURL = "https://api.themoviedb.org/3/discover/movie?with_genres=9648,80,27,53&api_key=e8f1cf6169288a814923ee8e5fe9e6f9&page=" + page;
-            drinkQueryURL = "https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php";
             break;
 
         case "romantic":
             movieQueryURL = "https://api.themoviedb.org/3/discover/movie?with_genres=10749,35&api_key=e8f1cf6169288a814923ee8e5fe9e6f9&page=" + page;
-            drinkQueryURL = "https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php";
             break;
     }
 
@@ -149,35 +140,86 @@ function generateMovie(){
         url: movieQueryURL,
         method: "GET"
     }).then(function (response) {
-
         for(var i = 0; i < 4; i++){
+            movieArray = response.results;
+            console.log(response);
 
-        movieArray = response.results;
-        console.log(response);
+            randomMovie = Math.floor((Math.random() * movieArray.length));
+            checkMovie(randomMovie);
 
-        var movieContainer = $("#movies");
-            
+            var movieContainer = $("#movies");
+                
             var movieCard =`
                             <div class="card col-md">
                                 <img class="card-img-top" id='poster' src="https://image.tmdb.org/t/p/w185${movieArray[i].poster_path}" alt="${movieArray[i].title}">
-                                <div class="card-body" id="movie-content">
+                                <button type="button" class="readMore" id="readMore${i}">Read More</button>
+                                <div class="card-body" style="display:none" id="movie-content${i}">
                                     <h5 class="card-title" id="movie-title">${movieArray[i].title}</h5>
                                     <div class="meta">
                                         <span class="date" alt="${movieArray[i].title}">Release Date: ${movieArray[i].release_date}</span>
                                     </div>
                                     <p class="card-text" id="movie-description">${movieArray[i].overview}</p>
                                 </div>
-                                <div class="card-footer" id="rating">
+                                <div class="card-footer movie-content" style="display:none" id="rating${i}">
                                     <small class="text-muted">Rating: ${movieArray[i].vote_average}</small>
                                 </div>
                             </div>
                         `
-
             $(movieContainer).append($(movieCard));
         }
-    });
+
+        $(".readMore").on("click", function () {
+            switch ($(this).attr('id')) {
+                case "readMore0":
+                    if ($('#movie-content0').css('display') == "none") {
+                        $('#movie-content0').css("display", "block");
+                        $("#rating0").show();
+                        $(this).text("Read Less");
+                    } else {
+                        $('#movie-content0').css("display", "none");
+                        $("#rating0").hide();
+                        $(this).text("Read More");
+                    }
+                break;
+                case "readMore1":
+                    if ($('#movie-content1').css('display') == "none") {
+                        $('#movie-content1').css("display", "block");
+                        $("#rating1").show();
+                        $(this).text("Read Less");
+                    } else {
+                        $('#movie-content1').css("display", "none");
+                        $("#rating1").hide();
+                        $(this).text("Read More");
+                    }
+                break;
+                case "readMore2":
+                    if ($('#movie-content2').css('display') == "none") {
+                        $('#movie-content2').css("display", "block");
+                        $("#rating2").show();
+                        $(this).text("Read Less");
+                    } else {
+                        $('#movie-content2').css("display", "none");
+                        $("#rating2").hide();
+                        $(this).text("Read More");
+                    }
+                break;
+                case "readMore3":
+                    if ($('#movie-content3').css('display') == "none") {
+                        $('#movie-content3').css("display", "block");
+                        $("#rating3").show();
+                        $(this).text("Read Less");
+                    } else {
+                        $('#movie-content3').css("display", "none");
+                        $("#rating3").hide();
+                        $(this).text("Read More");
+                    }
+                break;
+            }
+        });
+    })
     $("#WelcomeModal").modal("hide");
 }
+
 
 function generateFood(){
 
