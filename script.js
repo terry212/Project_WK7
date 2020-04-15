@@ -149,131 +149,34 @@ function generateMovie(){
         url: movieQueryURL,
         method: "GET"
     }).then(function (response) {
+
+        for(var i = 0; i < 4; i++){
+
         movieArray = response.results;
+        console.log(response);
 
-        // Create container for movie cards
-        var movieContainer = $("<div>");
-        $(movieContainer).attr({ "class": "col-xs-12 card movie", "id": "movieDisplay" });
-        $("#movies").prepend($(movieContainer))
-
-        for (i = 0; i < 4; i++) {
-
-            // Generate random movie and check if it's already in the array of movies chosen
-            randomMovie = Math.floor((Math.random() * movieArray.length));
-            checkMovie(randomMovie);
-
-            // Assign variables for content
-            var movieTitle = movieArray[newMovie].title;
-            var moviePosterPath = movieArray[newMovie].poster_path;
-            var moviePosterURL;
-            var rating = movieArray[newMovie].vote_average;
-            var overview = movieArray[newMovie].overview;
-            var releaseDate = movieArray[newMovie].release_date;
-            console.log(movieTitle);
-
-            // If there moviePoster path is null, add placeholder image
-            if (moviePosterPath !== null) {
-                moviePosterURL = "http://image.tmdb.org/t/p/w185" + moviePosterPath;
-            } else {
-                moviePosterURL = "./Assets/Images/missingposter.png";
-            }
-
-            // Appends movie poster to the appropriate div
-            movieDivCard = $("<div>");
-            var moviePoster = $("<div>");
-            $(moviePoster).attr({ "class": "image", "id": "movieposter" }).append("<img src='" + moviePosterURL + "'/>");
-            $(movieDivCard).attr("class", "card col-sm-3").append($(moviePoster));
-            $(movieContainer).append($(movieDivCard));
-
-            // Appends movie content to the appropriate div
-            movieContentDiv = $("<div>");
-            $(movieContentDiv).attr({ "class": "content", "id": "movie-content" + i + "" });
-            $(moviePoster).append($(movieContentDiv));
-
-            // Create movie title header, append to movieContentDiv
-            $(movieContentDiv).append("<a class='header' id='movie-title'>" + movieTitle + "</a>");
-
-            // Create meta div and release date, append to movieContentDiv
-            var metaDiv = $("<div>");
-            $(metaDiv).attr("class", "meta").append("<span class='date'>Release Date: " + releaseDate + "</span>");
-            $(movieContentDiv).append($(metaDiv));
-
-            // Create movie description div, append to movieContentDiv
-            $(movieContentDiv).append("<div class='description' id='movie-description'>" + overview + "</div>");
-
-
-            // Create rating, append to movieDivCard
-            $(moviePoster).append("<div class='extra content' id='rating" + i + "'><p>Rating: " + rating + "</p></div>");
-
-            // Create button for reading more info
-            var readMoreBtn = $("<button class='readMore btn btn-light' type='button' id='readMore"+ i +"'>Read More</button>");
-            $(moviePoster).append($(readMoreBtn));
-
-
-            // By default, hide description & rating
-            $(movieContentDiv).css("display", "none");
-            $(".extra").hide();
-            $(readMoreBtn).css("display", "none");
-
-            // On hover, show button to read more
-            $(movieDivCard).mouseenter(function () {
-                $(this).find('button').css("display", "block");
-            }).mouseleave(function () {
-                $(this).find('button').css("display", "none");
-            });
-        }
-        $(".readMore").on("click", function () {
-            switch ($(this).attr('id')) {
-                case "readMore0":
-                    if ($('#movie-content0').css('display') == "none") {
-                        $('#movie-content0').css("display", "block");
-                        $("#rating0").show();
-                        $(this).text("Read Less");
-                    } else {
-                        $('#movie-content0').css("display", "none");
-                        $(".extra").hide();
-                        $(this).text("Read More");
-                    }
-                break;
-                case "readMore1":
-                    if ($('#movie-content1').css('display') == "none") {
-                        $('#movie-content1').css("display", "block");
-                        $("#rating1").show();
-                        $(this).text("Read Less");
-                    } else {
-                        $('#movie-content1').css("display", "none");
-                        $(".extra").hide();
-                        $(this).text("Read More");
-                    }
-                break;
-                case "readMore2":
-                    if ($('#movie-content2').css('display') == "none") {
-                        $('#movie-content2').css("display", "block");
-                        $("#rating2").show();
-                        $(this).text("Read Less");
-                    } else {
-                        $('#movie-content2').css("display", "none");
-                        $(".extra").hide();
-                        $(this).text("Read More");
-                    }
-                break;
-                case "readMore3":
-                    if ($('#movie-content3').css('display') == "none") {
-                        $('#movie-content3').css("display", "block");
-                        $("#rating3").show();
-                        $(this).text("Read Less");
-                    } else {
-                        $('#movie-content3').css("display", "none");
-                        $(".extra").hide();
-                        $(this).text("Read More");
-                    }
-                break;
-            }
-
+        var movieContainer = $("#movies");
             
-        })
-        $("#WelcomeModal").modal("hide");
+            var movieCard =`
+                            <div class="card col-md">
+                                <img class="card-img-top" id='poster' src="https://image.tmdb.org/t/p/w185${movieArray[i].poster_path}" alt="${movieArray[i].title}">
+                                <div class="card-body" id="movie-content">
+                                    <h5 class="card-title" id="movie-title">${movieArray[i].title}</h5>
+                                    <div class="meta">
+                                        <span class="date" alt="${movieArray[i].title}">Release Date: ${movieArray[i].release_date}</span>
+                                    </div>
+                                    <p class="card-text" id="movie-description">${movieArray[i].overview}</p>
+                                </div>
+                                <div class="card-footer" id="rating">
+                                    <small class="text-muted">Rating: ${movieArray[i].vote_average}</small>
+                                </div>
+                            </div>
+                        `
+
+            $(movieContainer).append($(movieCard));
+        }
     });
+    $("#WelcomeModal").modal("hide");
 }
 
 function generateFood(){
@@ -298,6 +201,7 @@ function generateFood(){
                         `
 
             foodContainer.append(foodCard);
+
         }
     }); 
 
