@@ -234,10 +234,11 @@ function generateFood(){
         for(var i = 0; i < 4; i++){
             
             var foodCard =`
-                            <div class="card col-md">
+                            <div class="card col-md text-center">
                                 <img class="card-img-top" src="${response.meals[i].strMealThumb}" alt="${response.meals[i].strMeal}">
                                 <div class="card-body" id="food-content">
                                     <h5 class="card-title" id="food-name">${response.meals[i].strMeal}</h5>
+                                    <a class="btn btn-primary btn-lg" href="#" role="button">Select Item</a>
                                 </div>
                             </div>
                         `
@@ -331,7 +332,7 @@ function generateDrink(){
                 drinksIn = drinksIn + response.drinks[i].strIngredient15;
             }
 
-            var drinkCard = `<div class="card col-md">
+            var drinkCard = `<div class="card col-md text-center">
                                 <img class="card-img-top" src="${response.drinks[i].strDrinkThumb}" alt="${response.drinks[i].strDrink}">
                                 <div class="card-body" id="drink-content">
                                     <h5 class="card-title" id="drink-name">${response.drinks[i].strDrink}</h5>
@@ -339,6 +340,7 @@ function generateDrink(){
                                         <span class="type">${response.drinks[i].strAlcoholic}</span>
                                     </div>
                                     <p class="card-text" id="drink-ingredients"> Ingredients: ${drinksIn}</p>
+                                    <a class="btn btn-primary btn-lg" href="#" role="button">Select Item</a>
                                 </div>
                                 
                             </div>`

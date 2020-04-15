@@ -54,13 +54,13 @@ body{
     color: black;
 }
 
-#drink-content{
+/* #drink-content{
     background-color: rgb(212, 212, 207);
 }
 
 #food-content{
     background-color: rgb(212, 212, 207);
-}
+} */
 
 #WelcomeModal .modal-title {
     text-align: center;
@@ -81,4 +81,8 @@ body{
     flex-direction: row;
     background-color: transparent;
 } */
+
+.card-img-top{
+ max-width: 200px;
+}
 
