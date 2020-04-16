@@ -20,13 +20,14 @@ $("#WelcomeModal").modal({
 $(document).ready(function () {
 
     // By default, hide the second question and modalSubmit button
+    $(".jumbotron").hide();
     $("#moodForm").hide();
     $("hr").hide();
     $(".modal-footer").hide();
 
     // Create a "next" button to get to the next question
-    var nextBtn = $("<button class='btn btn-light' type='button' id='next'><i class='fas fa-arrow-right'></i></button>");
-    $("#crowdForm").append($(nextBtn));
+    var nextBtn = $("<div id='next'><button class='btn btn-light' type='button'><i class='fas fa-arrow-right'></i></button></div>");
+    $(".form-group").append($(nextBtn));
 
     // When the "next" button is clicked, show the second question
     // If no company answers are selected, show error
@@ -131,14 +132,11 @@ $("#submitButton").on("click", function () {
     generateMovie();
     generateFood();
     generateDrink();
+    $(".jumbotron").show();
 })
 
 
 function generateMovie(){
-<<<<<<< HEAD
-=======
-    // Keep modal open when no radio buttons are clicked on moodForm
->>>>>>> 3e18dc43ec82e8be45e8e05c7f205d038be32e4b
     $.ajax({
         url: movieQueryURL,
         method: "GET"
@@ -153,9 +151,9 @@ function generateMovie(){
             var movieContainer = $("#movies");
                 
             var movieCard =`
-                            <div class="card col-md">
+                            <div class="card col-md" id="movie${i}">
                                 <img class="card-img-top" id='poster' src="https://image.tmdb.org/t/p/w185${movieArray[i].poster_path}" alt="${movieArray[i].title}">
-                                <button type="button" class="readMore btn btn-primary btn-lg" id="readMore${i}">Read More</button>
+                                <button type="button" class="readMore btn btn-light btn-lg" id="readMore${i}">Read More</button>
                                 <div class="card-body" style="display:none" id="movie-content${i}">
                                     <h5 class="card-title" id="movie-title">${movieArray[i].title}</h5>
                                     <div class="meta">
@@ -171,6 +169,31 @@ function generateMovie(){
                         `
             $(movieContainer).append($(movieCard));
         }
+
+        $(".select").on("click", function() {
+            switch ($(this).attr('id')) {
+                case "select0":
+                    $("#userMovieChoice").empty();
+                    $("#movie0").clone().appendTo($("#userMovieChoice"));
+                    break;
+
+                case "select1":
+                    $("#userMovieChoice").empty();
+                    $("#movie1").clone().appendTo($("#userMovieChoice"));
+                    break;
+
+                case "select2":
+                    $("#userMovieChoice").empty();
+                    $("#movie2").clone().appendTo($("#userMovieChoice"));
+                    break;
+
+                case "select3":
+                    $("#userMovieChoice").empty();
+                    $("#movie3").clone().appendTo($("#userMovieChoice"));
+                    break;
+            }
+        })
+
 
         $(".readMore").on("click", function () {
             switch ($(this).attr('id')) {

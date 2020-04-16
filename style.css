@@ -1,8 +1,10 @@
 .landing-image {
     background-image: url('inside-theater.png');
-    background-size: cover !important;
-    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: cover;
     height: 100vh;
+    width: 100%;
     padding: 1%;
 }
 
@@ -19,9 +21,7 @@ div.movie {
 }
 
 .image-holder {
-    position: absolute;
-    bottom: 4.5%;
-    left: 12%;
+    border: 1px solid black;
 }
 
 img#gameImg {
@@ -51,18 +51,11 @@ body {
 
 }
 
+
 .extra {
     background-color: rgb(212, 212, 207);
     color: black;
 }
-
-/* #drink-content{
-    background-color: rgb(212, 212, 207);
-}
-
-#food-content{
-    background-color: rgb(212, 212, 207);
-} */
 
 #drink-ingredients {
     font-family: 'Montserrat', sans-serif;
@@ -101,4 +94,16 @@ a,
 #readMore2,
 #readMore3 {
     margin: auto;
+}
+
+.card  {
+    margin: 30px;
+}
+
+#next {
+    text-align: right;
+}
+
+#userSelectionArea .select {
+    display: none;   
 }
