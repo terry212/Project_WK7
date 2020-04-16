@@ -104,7 +104,7 @@ function checkUserInput() {
     switch (userInput2) {
         case "family":
             movieQueryURL = "https://api.themoviedb.org/3/discover/movie?with_genres=10751&certification.lte=G&api_key=e8f1cf6169288a814923ee8e5fe9e6f9&page=" + page;
-            drinkQueryURL = "https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php?";
+            drinkQueryURL = "https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php";
             mealQueryURL = "https://www.themealdb.com/api/json/v2/9973533/randomselection.php"
             break;
 
@@ -162,7 +162,8 @@ function generateMovie(){
                                     <div class="meta">
                                         <span class="date type" alt="${movieArray[i].title}">Release Date: ${movieArray[i].release_date}</span>
                                     </div>
-                                    <p class="card-text" id="movie-description${i}">${movieArray[i].overview}</p>
+                                    <p class="card-text" id="movie-description${i}">${movieArray[i].overview}<br><br>
+                                    <span id='selectBtn${i}' class="selectbtn" style='color: green'><i class='fas fa-check'></i> Selected!</span></p>
                                 </div>
                                 <div class="card-footer movie-content" id="rating${i}">
                                     <small class="text-muted">Rating: ${movieArray[i].vote_average}</small><br>
@@ -172,92 +173,60 @@ function generateMovie(){
                             </div>
                         `
             $("#movieCard" + i).append($(movieCard));
+            $("#selectBtn" + i).css("display", "none");
         }
-
-
 
         $(".select").on("click", function() {
             switch ($(this).attr('id')) {
                 case "select0":
-                    $("span").remove();
-                    $("#movie-description0").append("<br><br><span id='select' style='color: green'><i class='fas fa-check'></i> Selected!</span>");
-                    $("#userMovieChoice").empty();
-                    $("#movie0").clone().appendTo($("#userMovieChoice"));
-                    
+                    if ($("#selectBtn0").css('display') == 'block'){
+                        $("#selectBtn0").css("display", "none");
+                        $("#userMovieChoice").empty();
+
+                    } else {
+                        $("#selectBtn0").css("display", "block");
+                        $("#userMovieChoice").empty();
+                        $("#movie0").clone().appendTo($("#userMovieChoice"));
+                    } 
                     break;
 
                 case "select1":
-                    $("span").remove();
-                    $("#movie-description1").append("<br><br><span id='select' style='color: green'><i class='fas fa-check'></i> Selected!</span>");
-                    $("#userMovieChoice").empty();
-                    $("#movie1").clone().appendTo($("#userMovieChoice"));
+                    if ($("#selectBtn1").css('display') == 'block'){
+                        $("#selectBtn1").css("display", "none");
+                        $("#userMovieChoice").empty();
+
+                    } else {
+                        $("#selectBtn1").css("display", "block");
+                        $("#userMovieChoice").empty();
+                        $("#movie1").clone().appendTo($("#userMovieChoice"));
+                    }              
                     break;
 
                 case "select2":
-                    $("span").remove();
-                    $("#movie-description2").append("<br><br><span id='select' style='color: green'><i class='fas fa-check'></i> Selected!</span>");
-                    $("#userMovieChoice").empty();
-                    $("#movie2").clone().appendTo($("#userMovieChoice"));
+                    if ($("#selectBtn2").css('display') == 'block'){
+                        $("#selectBtn2").css("display", "none");
+                        $("#userMovieChoice").empty();
+
+                    } else {
+                        $("#selectBtn2").css("display", "block");
+                        $("#userMovieChoice").empty();
+                        $("#movie2").clone().appendTo($("#userMovieChoice"));
+                    }         
                     break;
 
                 case "select3":
-                    $("span").remove();
-                    $("#movie-description3").append("<br><br><span id='select' style='color: green'><i class='fas fa-check'></i> Selected!</span>");
-                    $("#userMovieChoice").empty();
-                    $("#movie3").clone().appendTo($("#userMovieChoice"));
+                    if ($("#selectBtn3").css('display') == 'block'){
+                        $("#selectBtn3").css("display", "none");
+                        $("#userMovieChoice").empty();
+
+                    } else {
+                        $("#selectBtn3").css("display", "block");
+                        $("#userMovieChoice").empty();
+                        $("#movie3").clone().appendTo($("#userMovieChoice"));
+                    }                 
                     break;
             }
         })
-
-
-        // $(".readMore").on("click", function () {
-        //     switch ($(this).attr('id')) {
-        //         case "readMore0":
-        //             if ($('#movie-content0').css('display') == "none") {
-        //                 $('#movie-content0').css("display", "block");
-        //                 $("#rating0").show();
-        //                 $(this).text("Read Less");
-        //             } else {
-        //                 $('#movie-content0').css("display", "none");
-        //                 $("#rating0").hide();
-        //                 $(this).text("Read More");
-        //             }
-        //         break;
-        //         case "readMore1":
-        //             if ($('#movie-content1').css('display') == "none") {
-        //                 $('#movie-content1').css("display", "block");
-        //                 $("#rating1").show();
-        //                 $(this).text("Read Less");
-        //             } else {
-        //                 $('#movie-content1').css("display", "none");
-        //                 $("#rating1").hide();
-        //                 $(this).text("Read More");
-        //             }
-        //         break;
-        //         case "readMore2":
-        //             if ($('#movie-content2').css('display') == "none") {
-        //                 $('#movie-content2').css("display", "block");
-        //                 $("#rating2").show();
-        //                 $(this).text("Read Less");
-        //             } else {
-        //                 $('#movie-content2').css("display", "none");
-        //                 $("#rating2").hide();
-        //                 $(this).text("Read More");
-        //             }
-        //         break;
-        //         case "readMore3":
-        //             if ($('#movie-content3').css('display') == "none") {
-        //                 $('#movie-content3').css("display", "block");
-        //                 $("#rating3").show();
-        //                 $(this).text("Read Less");
-        //             } else {
-        //                 $('#movie-content3').css("display", "none");
-        //                 $("#rating3").hide();
-        //                 $(this).text("Read More");
-        //             }
-        //         break;
-        //     }
-        // });
     })
     $("#WelcomeModal").modal("hide");
 }
