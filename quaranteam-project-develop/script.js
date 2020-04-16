@@ -134,12 +134,12 @@ $("#submitButton").on("click", function () {
 })
 
 
-function generateMovie(){
+function generateMovie() {
     $.ajax({
         url: movieQueryURL,
         method: "GET"
     }).then(function (response) {
-        for(var i = 0; i < 4; i++){
+        for (var i = 0; i < 4; i++) {
             movieArray = response.results;
             console.log(response);
 
@@ -147,8 +147,8 @@ function generateMovie(){
             checkMovie(randomMovie);
 
             var movieContainer = $("#movies");
-                
-            var movieCard =`
+
+            var movieCard = `
                             <div class="card col-md">
                                 <img class="card-img-top" id='poster' src="https://image.tmdb.org/t/p/w185${movieArray[i].poster_path}" alt="${movieArray[i].title}">
                                 <button type="button" class="readMore btn btn-primary btn-lg" id="readMore${i}">Read More</button>
@@ -180,7 +180,7 @@ function generateMovie(){
                         $("#rating0").hide();
                         $(this).text("Read More");
                     }
-                break;
+                    break;
                 case "readMore1":
                     if ($('#movie-content1').css('display') == "none") {
                         $('#movie-content1').css("display", "block");
@@ -191,7 +191,7 @@ function generateMovie(){
                         $("#rating1").hide();
                         $(this).text("Read More");
                     }
-                break;
+                    break;
                 case "readMore2":
                     if ($('#movie-content2').css('display') == "none") {
                         $('#movie-content2').css("display", "block");
@@ -202,7 +202,7 @@ function generateMovie(){
                         $("#rating2").hide();
                         $(this).text("Read More");
                     }
-                break;
+                    break;
                 case "readMore3":
                     if ($('#movie-content3').css('display') == "none") {
                         $('#movie-content3').css("display", "block");
@@ -213,7 +213,7 @@ function generateMovie(){
                         $("#rating3").hide();
                         $(this).text("Read More");
                     }
-                break;
+                    break;
             }
         });
     })
@@ -221,19 +221,19 @@ function generateMovie(){
 }
 
 
-function generateFood(){
+function generateFood() {
 
     $.ajax({
         url: mealQueryURL,
         method: "GET"
-    }).then(function(response){
+    }).then(function (response) {
         console.log(response);
 
         var foodContainer = $('#food');
 
-        for(var i = 0; i < 4; i++){
-            
-            var foodCard =`
+        for (var i = 0; i < 4; i++) {
+
+            var foodCard = `
                             <div class="card col-md text-center">
                                 <img class="card-img-top" src="${response.meals[i].strMealThumb}" alt="${response.meals[i].strMeal}">
                                 <div class="card-body" id="food-content">
@@ -246,22 +246,22 @@ function generateFood(){
             foodContainer.append(foodCard);
 
         }
-    }); 
+    });
 
 }
 
-function generateDrink(){
+function generateDrink() {
 
     var drinkContainer = $('#drinks');
 
     $.ajax({
         url: drinkQueryURL,
         method: "GET"
-    }).then(function(response){
+    }).then(function (response) {
         console.log(response);
 
-        
-        for(var i = 0; i < 4; i++){
+
+        for (var i = 0; i < 4; i++) {
             var drinkIn = '';
             // debugger;
             // for(var k = 0; k < 15; k++){
@@ -272,63 +272,63 @@ function generateDrink(){
             //     n++;
             // }
 
-            if(response.drinks[i].strIngredient1 != null){
+            if (response.drinks[i].strIngredient1 != null) {
                 drinksIn = response.drinks[i].strIngredient1;
             }
-            
-            if(response.drinks[i].strIngredient2 != null){
+
+            if (response.drinks[i].strIngredient2 != null) {
                 drinksIn = drinksIn + response.drinks[i].strIngredient2;
             }
-            
-            if(response.drinks[i].strIngredient3 != null){
+
+            if (response.drinks[i].strIngredient3 != null) {
                 drinksIn = drinksIn + response.drinks[i].strIngredient3;
             }
-            
-            if(response.drinks[i].strIngredient4 != null){
+
+            if (response.drinks[i].strIngredient4 != null) {
                 drinksIn = drinksIn + response.drinks[i].strIngredient4;
             }
-            
-            if(response.drinks[i].strIngredient5 != null){
+
+            if (response.drinks[i].strIngredient5 != null) {
                 drinksIn = drinksIn + response.drinks[i].strIngredient5;
             }
-            
-            if(response.drinks[i].strIngredient6 != null){
+
+            if (response.drinks[i].strIngredient6 != null) {
                 drinksIn = drinksIn + response.drinks[i].strIngredient6;
             }
-            
-            if(response.drinks[i].strIngredient7 != null){
+
+            if (response.drinks[i].strIngredient7 != null) {
                 drinksIn = drinksIn + response.drinks[i].strIngredient7;
             }
-            
-            if(response.drinks[i].strIngredient8 != null){
+
+            if (response.drinks[i].strIngredient8 != null) {
                 drinksIn = drinksIn + response.drinks[i].strIngredient8;
             }
-            
-            if(response.drinks[i].strIngredient9 != null){
+
+            if (response.drinks[i].strIngredient9 != null) {
                 drinksIn = drinksIn + response.drinks[i].strIngredient9;
             }
-            
-            if(response.drinks[i].strIngredient10 != null){
+
+            if (response.drinks[i].strIngredient10 != null) {
                 drinksIn = drinksIn + response.drinks[i].strIngredient10;
             }
-            
-            if(response.drinks[i].strIngredient11 != null){
+
+            if (response.drinks[i].strIngredient11 != null) {
                 drinksIn = drinksIn + response.drinks[i].strIngredient11;
             }
-            
-            if(response.drinks[i].strIngredient12 != null){
+
+            if (response.drinks[i].strIngredient12 != null) {
                 drinksIn = drinksIn + response.drinks[i].strIngredient12;
             }
-            
-            if(response.drinks[i].strIngredient13 != null){
+
+            if (response.drinks[i].strIngredient13 != null) {
                 drinksIn = drinksIn + response.drinks[i].strIngredient13;
             }
-            
-            if(response.drinks[i].strIngredient14 != null){
+
+            if (response.drinks[i].strIngredient14 != null) {
                 drinksIn = drinksIn + response.drinks[i].strIngredient14;
             }
-            
-            if(response.drinks[i].strIngredient15 != null){
+
+            if (response.drinks[i].strIngredient15 != null) {
                 drinksIn = drinksIn + response.drinks[i].strIngredient15;
             }
 
@@ -345,10 +345,10 @@ function generateDrink(){
                                 
                             </div>`
 
-            
+
 
             drinkContainer.append(drinkCard);
         }
-    }); 
+    });
 
 }
