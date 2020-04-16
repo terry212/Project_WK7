@@ -240,33 +240,67 @@ function generateFood(){
     }).then(function(response){
         console.log(response);
 
-        // var foodContainer = $('#food');
+        var foodContainer = $('#carouselMeals .carousel-inner');
 
         for(var i = 0; i < 4; i++){
             
-            var foodCard =`
-                            <div class="card col-md text-center">
-                                <img class="card-img-top" src="${response.meals[i].strMealThumb}" alt="${response.meals[i].strMeal}">
-                                <div class="card-body" id="food-content">
-                                    <h5 class="card-title" id="food-name">${response.meals[i].strMeal}</h5>
-                                    
+            var foodCardFirst =` <div class="carousel-item foodCard active">
+                                <div class="card col-md text-center">
+                                    <img class="card-img-top" src="${response.meals[i].strMealThumb}" alt="${response.meals[i].strMeal}">
+                                    <div class="card-body" id="food-content">
+                                        <h5 class="card-title" id="food-name">${response.meals[i].strMeal}</h5>
+                                        
+                                    </div>
+                                    <a class="selectFood btn btn-primary btn-lg" href="#" role="button">Select Item</a>
                                 </div>
-                                <a class="btn btn-primary btn-lg" href="#" role="button">Select Item</a>
                             </div>
                         `
+            var foodCard =` <div class="carousel-item foodCard">
+                                <div class="card col-md text-center">
+                            <img class="card-img-top" src="${response.meals[i].strMealThumb}" alt="${response.meals[i].strMeal}">
+                            <div class="card-body" id="food-content">
+                                <h5 class="card-title" id="food-name">${response.meals[i].strMeal}</h5>
+                                
+                            </div>
+                            <a class="selectFood btn btn-primary btn-lg" href="#" role="button">Select Item</a>
+                        </div>
+                    </div>
+                `
 
-            // foodContainer.append(foodCard);
+            //foodContainer.append(foodCard);
 
-            $("#foodCard" + i).append($(foodCard));
+            //$("#carouselMeals .carousel-inner").append(foodCard);
+
+            if(i == 0){
+                foodContainer.append(foodCardFirst);
+            }else{
+                foodContainer.append(foodCard);
+            }
 
         }
     }); 
 
 }
 
+$("body").delegate('.selectFood',"click",function(){
+    console.log($(this)[0].offsetParent);
+    console.log($('#userFoodChoice')[0].innerHTML);
+
+    var selectedFood = $(this)[0].offsetParent;
+
+   if($('#userFoodChoice')[0].innerHTML == ""){
+    $(selectedFood).clone().appendTo('#userFoodChoice')
+   }else{
+    $('#userFoodChoice').empty();
+    $(selectedFood).clone().appendTo('#userFoodChoice')
+   }
+
+
+});
+
 function generateDrink(){
 
-    // var drinkContainer = $('#drinks');
+    var drinkContainer = $('#carouselDrinks .carousel-inner');
 
     $.ajax({
         url: drinkQueryURL,
@@ -295,58 +329,59 @@ function generateDrink(){
             }
             
             if(response.drinks[i].strIngredient3 != null){
-                drinksIn = drinksIn + response.drinks[i].strIngredient3;
+                drinksIn = drinksIn + response.drinks[i].strIngredient3 + ", ";
             }
             
             if(response.drinks[i].strIngredient4 != null){
-                drinksIn = drinksIn + response.drinks[i].strIngredient4;
+                drinksIn = drinksIn + response.drinks[i].strIngredient4  + ", ";
             }
             
             if(response.drinks[i].strIngredient5 != null){
-                drinksIn = drinksIn + response.drinks[i].strIngredient5;
+                drinksIn = drinksIn + response.drinks[i].strIngredient5  + ", ";
             }
             
             if(response.drinks[i].strIngredient6 != null){
-                drinksIn = drinksIn + response.drinks[i].strIngredient6;
+                drinksIn = drinksIn + response.drinks[i].strIngredient6  + ", ";
             }
             
             if(response.drinks[i].strIngredient7 != null){
-                drinksIn = drinksIn + response.drinks[i].strIngredient7;
+                drinksIn = drinksIn + response.drinks[i].strIngredient7  + ", ";
             }
             
             if(response.drinks[i].strIngredient8 != null){
-                drinksIn = drinksIn + response.drinks[i].strIngredient8;
+                drinksIn = drinksIn + response.drinks[i].strIngredient8  + ", ";
             }
             
             if(response.drinks[i].strIngredient9 != null){
-                drinksIn = drinksIn + response.drinks[i].strIngredient9;
+                drinksIn = drinksIn + response.drinks[i].strIngredient9  + ", ";
             }
             
             if(response.drinks[i].strIngredient10 != null){
-                drinksIn = drinksIn + response.drinks[i].strIngredient10;
+                drinksIn = drinksIn + response.drinks[i].strIngredient10  + ", ";
             }
             
             if(response.drinks[i].strIngredient11 != null){
-                drinksIn = drinksIn + response.drinks[i].strIngredient11;
+                drinksIn = drinksIn + response.drinks[i].strIngredient11  + ", ";
             }
             
             if(response.drinks[i].strIngredient12 != null){
-                drinksIn = drinksIn + response.drinks[i].strIngredient12;
+                drinksIn = drinksIn + response.drinks[i].strIngredient12  + ", ";
             }
             
             if(response.drinks[i].strIngredient13 != null){
-                drinksIn = drinksIn + response.drinks[i].strIngredient13;
+                drinksIn = drinksIn + response.drinks[i].strIngredient13 + ", ";
             }
             
             if(response.drinks[i].strIngredient14 != null){
-                drinksIn = drinksIn + response.drinks[i].strIngredient14;
+                drinksIn = drinksIn + response.drinks[i].strIngredient14  + ", ";
             }
             
             if(response.drinks[i].strIngredient15 != null){
                 drinksIn = drinksIn + response.drinks[i].strIngredient15;
             }
 
-            var drinkCard = `<div class="card col-md text-center">
+            var drinkCard = ` <div class="carousel-item drinkCard">
+                                <div class="card col-md text-center">
                                 <img class="card-img-top" src="${response.drinks[i].strDrinkThumb}" alt="${response.drinks[i].strDrink}">
                                 <div class="card-body" id="drink-content">
                                     <h5 class="card-title" id="drink-name">${response.drinks[i].strDrink}</h5>
@@ -355,16 +390,50 @@ function generateDrink(){
                                     </div>
                                     <p class="card-text" id="drink-ingredients"> Ingredients: ${drinksIn}</p>
                                 </div>
-                                <a class="btn btn-primary btn-lg" href="#" role="button">Select Item</a>
+                                <a class="btn btn-primary btn-lg selectDrink" href="#" role="button">Select Item</a>
                                 
+                            </div>
                             </div>`
 
-            
+            var drinkCardFirst = `<div class="carousel-item active drinkCard">
+                                    <div class="card col-md text-center active">
+                                    <img class="card-img-top" src="${response.drinks[i].strDrinkThumb}" alt="${response.drinks[i].strDrink}">
+                                    <div class="card-body" id="drink-content">
+                                        <h5 class="card-title" id="drink-name">${response.drinks[i].strDrink}</h5>
+                                        <div class="meta">
+                                            <span class="type">${response.drinks[i].strAlcoholic}</span>
+                                        </div>
+                                        <p class="card-text" id="drink-ingredients"> Ingredients: ${drinksIn}</p>
+                                    </div>
+                                    <a class="btn btn-primary btn-lg selectDrink" href="#" role="button">Select Item</a>
+                                    </div>
+                                </div>`
 
             // drinkContainer.append(drinkCard);
 
-            $("#drinkCard" + i).append($(drinkCard));
+            if(i == 0){
+                drinkContainer.append(drinkCardFirst);
+            }else{
+                drinkContainer.append(drinkCard);
+            }
         }
     }); 
 
 }
+
+$("body").delegate('.selectDrink',"click",function(){
+    console.log($(this)[0].offsetParent);
+    console.log($('#userDrinkChoice')[0].innerHTML);
+
+    var selectedDrink = $(this)[0].offsetParent;
+
+    if($('#userDrinkChoice')[0].innerHTML == ""){
+        $(selectedDrink).clone().appendTo('#userDrinkChoice')
+       // $('#userDrinkChoice').append(selectedDrink);
+    }else{
+        $('#userDrinkChoice').empty();
+        $(selectedDrink).clone().appendTo('#userDrinkChoice')
+    }
+
+
+});

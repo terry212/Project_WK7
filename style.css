@@ -59,7 +59,6 @@ a,
 #carouselMeals, #carouselDrinks, #carouselMovies {
     margin-top: 50px;
     text-align: center;
-    font-family: 
 }
 
 #movie-title {
@@ -80,6 +79,11 @@ a,
 .card {
     height: 600px;
     overflow: auto;
+}
+
+#carouselMeals .card, #carouselDrinks .card{
+  height: 400px;
+  padding: 10px;
 }
 
 .card-img-top {
