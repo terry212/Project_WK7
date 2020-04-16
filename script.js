@@ -39,6 +39,10 @@ $(document).ready(function () {
         $("#next").hide();
         $(".modal-footer").show();
     });
+
+    $("#reload").click(function(){
+        location.reload(true);
+    });
 })
 
 // Function registers a radio button click
@@ -148,46 +152,57 @@ function generateMovie(){
             randomMovie = Math.floor((Math.random() * movieArray.length));
             checkMovie(randomMovie);
 
-            var movieContainer = $("#movies");
+            // var movieContainer = $("#movies");
                 
             var movieCard =`
-                            <div class="card col-md-3" id="movie${i}">
+                            <div class="card" id="movie${i}">
                                 <img class="card-img-top" id='poster' src="https://image.tmdb.org/t/p/w185${movieArray[i].poster_path}" alt="${movieArray[i].title}">
-                                <button type="button" class="readMore btn btn-light btn-lg" id="readMore${i}">Read More</button>
-                                <div class="card-body" style="display:none" id="movie-content${i}">
+                                <div class="card-body" id="movie-content${i}">
                                     <h5 class="card-title" id="movie-title">${movieArray[i].title}</h5>
                                     <div class="meta">
-                                        <span class="date" alt="${movieArray[i].title}">Release Date: ${movieArray[i].release_date}</span>
+                                        <span class="date type" alt="${movieArray[i].title}">Release Date: ${movieArray[i].release_date}</span>
                                     </div>
-                                    <p class="card-text" id="movie-description">${movieArray[i].overview}</p>
+                                    <p class="card-text" id="movie-description${i}">${movieArray[i].overview}</p>
                                 </div>
-                                <div class="card-footer movie-content" style="display:none" id="rating${i}">
+                                <div class="card-footer movie-content" id="rating${i}">
                                     <small class="text-muted">Rating: ${movieArray[i].vote_average}</small><br>
-                                    <button type="button" class="select btn btn-primary btn-sm" id="select${i}">Select Movie</button>
                                 </div>
+                                <button type="button" class="select btn btn-primary btn-sm" id="select${i}">Select Movie</button>
+
                             </div>
                         `
-            $(movieContainer).append($(movieCard));
+            $("#movieCard" + i).append($(movieCard));
         }
+
+
 
         $(".select").on("click", function() {
             switch ($(this).attr('id')) {
                 case "select0":
+                    $("span").remove();
+                    $("#movie-description0").append("<br><br><span id='select' style='color: green'><i class='fas fa-check'></i> Selected!</span>");
                     $("#userMovieChoice").empty();
                     $("#movie0").clone().appendTo($("#userMovieChoice"));
+                    
                     break;
 
                 case "select1":
+                    $("span").remove();
+                    $("#movie-description1").append("<br><br><span id='select' style='color: green'><i class='fas fa-check'></i> Selected!</span>");
                     $("#userMovieChoice").empty();
                     $("#movie1").clone().appendTo($("#userMovieChoice"));
                     break;
 
                 case "select2":
+                    $("span").remove();
+                    $("#movie-description2").append("<br><br><span id='select' style='color: green'><i class='fas fa-check'></i> Selected!</span>");
                     $("#userMovieChoice").empty();
                     $("#movie2").clone().appendTo($("#userMovieChoice"));
                     break;
 
                 case "select3":
+                    $("span").remove();
+                    $("#movie-description3").append("<br><br><span id='select' style='color: green'><i class='fas fa-check'></i> Selected!</span>");
                     $("#userMovieChoice").empty();
                     $("#movie3").clone().appendTo($("#userMovieChoice"));
                     break;
@@ -195,54 +210,54 @@ function generateMovie(){
         })
 
 
-        $(".readMore").on("click", function () {
-            switch ($(this).attr('id')) {
-                case "readMore0":
-                    if ($('#movie-content0').css('display') == "none") {
-                        $('#movie-content0').css("display", "block");
-                        $("#rating0").show();
-                        $(this).text("Read Less");
-                    } else {
-                        $('#movie-content0').css("display", "none");
-                        $("#rating0").hide();
-                        $(this).text("Read More");
-                    }
-                break;
-                case "readMore1":
-                    if ($('#movie-content1').css('display') == "none") {
-                        $('#movie-content1').css("display", "block");
-                        $("#rating1").show();
-                        $(this).text("Read Less");
-                    } else {
-                        $('#movie-content1').css("display", "none");
-                        $("#rating1").hide();
-                        $(this).text("Read More");
-                    }
-                break;
-                case "readMore2":
-                    if ($('#movie-content2').css('display') == "none") {
-                        $('#movie-content2').css("display", "block");
-                        $("#rating2").show();
-                        $(this).text("Read Less");
-                    } else {
-                        $('#movie-content2').css("display", "none");
-                        $("#rating2").hide();
-                        $(this).text("Read More");
-                    }
-                break;
-                case "readMore3":
-                    if ($('#movie-content3').css('display') == "none") {
-                        $('#movie-content3').css("display", "block");
-                        $("#rating3").show();
-                        $(this).text("Read Less");
-                    } else {
-                        $('#movie-content3').css("display", "none");
-                        $("#rating3").hide();
-                        $(this).text("Read More");
-                    }
-                break;
-            }
-        });
+        // $(".readMore").on("click", function () {
+        //     switch ($(this).attr('id')) {
+        //         case "readMore0":
+        //             if ($('#movie-content0').css('display') == "none") {
+        //                 $('#movie-content0').css("display", "block");
+        //                 $("#rating0").show();
+        //                 $(this).text("Read Less");
+        //             } else {
+        //                 $('#movie-content0').css("display", "none");
+        //                 $("#rating0").hide();
+        //                 $(this).text("Read More");
+        //             }
+        //         break;
+        //         case "readMore1":
+        //             if ($('#movie-content1').css('display') == "none") {
+        //                 $('#movie-content1').css("display", "block");
+        //                 $("#rating1").show();
+        //                 $(this).text("Read Less");
+        //             } else {
+        //                 $('#movie-content1').css("display", "none");
+        //                 $("#rating1").hide();
+        //                 $(this).text("Read More");
+        //             }
+        //         break;
+        //         case "readMore2":
+        //             if ($('#movie-content2').css('display') == "none") {
+        //                 $('#movie-content2').css("display", "block");
+        //                 $("#rating2").show();
+        //                 $(this).text("Read Less");
+        //             } else {
+        //                 $('#movie-content2').css("display", "none");
+        //                 $("#rating2").hide();
+        //                 $(this).text("Read More");
+        //             }
+        //         break;
+        //         case "readMore3":
+        //             if ($('#movie-content3').css('display') == "none") {
+        //                 $('#movie-content3').css("display", "block");
+        //                 $("#rating3").show();
+        //                 $(this).text("Read Less");
+        //             } else {
+        //                 $('#movie-content3').css("display", "none");
+        //                 $("#rating3").hide();
+        //                 $(this).text("Read More");
+        //             }
+        //         break;
+        //     }
+        // });
     })
     $("#WelcomeModal").modal("hide");
 }
@@ -256,7 +271,7 @@ function generateFood(){
     }).then(function(response){
         console.log(response);
 
-        var foodContainer = $('#food');
+        // var foodContainer = $('#food');
 
         for(var i = 0; i < 4; i++){
             
@@ -265,12 +280,15 @@ function generateFood(){
                                 <img class="card-img-top" src="${response.meals[i].strMealThumb}" alt="${response.meals[i].strMeal}">
                                 <div class="card-body" id="food-content">
                                     <h5 class="card-title" id="food-name">${response.meals[i].strMeal}</h5>
-                                    <a class="btn btn-primary btn-lg" href="#" role="button">Select Item</a>
+                                    
                                 </div>
+                                <a class="btn btn-primary btn-lg" href="#" role="button">Select Item</a>
                             </div>
                         `
 
-            foodContainer.append(foodCard);
+            // foodContainer.append(foodCard);
+
+            $("#foodCard" + i).append($(foodCard));
 
         }
     }); 
@@ -279,7 +297,7 @@ function generateFood(){
 
 function generateDrink(){
 
-    var drinkContainer = $('#drinks');
+    // var drinkContainer = $('#drinks');
 
     $.ajax({
         url: drinkQueryURL,
@@ -367,14 +385,16 @@ function generateDrink(){
                                         <span class="type">${response.drinks[i].strAlcoholic}</span>
                                     </div>
                                     <p class="card-text" id="drink-ingredients"> Ingredients: ${drinksIn}</p>
-                                    <a class="btn btn-primary btn-lg" href="#" role="button">Select Item</a>
                                 </div>
+                                <a class="btn btn-primary btn-lg" href="#" role="button">Select Item</a>
                                 
                             </div>`
 
             
 
-            drinkContainer.append(drinkCard);
+            // drinkContainer.append(drinkCard);
+
+            $("#drinkCard" + i).append($(drinkCard));
         }
     }); 
 

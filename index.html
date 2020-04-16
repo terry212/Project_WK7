@@ -164,21 +164,15 @@
         <!-- <div class="container"> -->
         <div class="jumbotron">
             <div class="row">
+                <div class="col-sm-6" align="center"><img src="./Assets/Images/logo-main.png" alt="logo" width="300px">
+                </div>
                 <div class="col-sm-3">
                     <div class="image-holder" align="center"><a href="https://timansy.github.io/04_homework/docs/04/"
                             target="_blank" rel="noopener noreferrer"><img src="./Assets/Images/gamearcade.png"
                                 style="max-width: 300px"></a>
                     </div>
                 </div>
-                <div class="col-sm-6" align="center"><img src="./Assets/Images/logo-main.png" alt="logo" width="300px">
-                </div>
-                <div class="col-sm-3" align="center" id="finalSubmission">
-                    <!-- Buttons for restarting or submitting selections -->
-                    <button type="button" class="btn btn-secondary">Restart</button><br><br>
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#receiptModal">All
-                        Set!</button>
-                </div>
-            </div>
+                <!-- </div>
             <div class="row" id="food">
 
             </div>
@@ -189,27 +183,139 @@
 
             <div class="row" id="movies">
 
+            </div> -->
             </div>
-        </div>
+            <div class="row">
+                <!--Carousel Wrapper for Meals -->
+                
+                <div id="carouselMeals" class="carousel slide carousel-multi-item col-sm-4" data-ride="carousel" data-interval="false">
+                    <h2>Choose your meal:</h2>
+                    <div class="carousel-inner" align="center" role="listbox">
 
-        <!-- </div> -->
-    </div>
+                        <div class="carousel-item active">
+                            <div class="card mb-2" id="foodCard0">
+                            </div>
+                        </div>
 
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.js"
-        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-        </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-        </script>
-    <!-- Optional JavaScript -->
-    <script src="script.js"></script>
-    <!-- Testing script -->
-    <script>
-        $('#WelcomeModal').modal('show');
-    </script>
+                        <div class="carousel-item">
+                            <div class="card mb-2" id="foodCard1">
+                            </div>
+                        </div>
+
+                        <div class="carousel-item">
+                            <div class="card mb-2" id="foodCard2">
+                            </div>
+                        </div>
+
+                        <div class="carousel-item">
+                            <div class="card mb-2" id="foodCard3">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="controls-bottom" align="center">
+                        <a class="btn-floating" href="#carouselMeals" data-slide="prev"><i
+                                class="fas fa-chevron-left"></i></a>
+                        <a class="btn-floating" href="#carouselMeals" data-slide="next"><i
+                                class="fas fa-chevron-right"></i></a>
+                    </div>
+
+                </div>
+
+                <!--Carousel Wrapper for Drinks -->
+                <div id="carouselDrinks" class="carousel slide carousel-multi-item col-sm-4" data-ride="carousel" data-interval="false">
+                    <h2>Choose your drink:</h2>
+                    <div class="carousel-inner" align="center" role="listbox">
+
+                        <div class="carousel-item active">
+                            <div class="card mb-2" id="drinkCard0">
+                            </div>
+                        </div>
+
+                        <div class="carousel-item">
+                            <div class="card mb-2" id="drinkCard1">
+                            </div>
+                        </div>
+
+                        <div class="carousel-item">
+                            <div class="card mb-2" id="drinkCard2">
+                            </div>
+                        </div>
+
+                        <div class="carousel-item">
+                            <div class="card mb-2" id="drinkCard3">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="controls-bottom" align="center">
+                        <a class="btn-floating" href="#carouselDrinks" data-slide="prev"><i
+                                class="fas fa-chevron-left"></i></a>
+                        <a class="btn-floating" href="#carouselDrinks" data-slide="next"><i
+                                class="fas fa-chevron-right"></i></a>
+                    </div>
+
+                </div>
+
+                <!--Carousel Wrapper for Movies -->
+                <div id="carouselMovies" class="carousel slide carousel-multi-item col-sm-4" data-ride="carousel" data-interval="false">
+                    <h2>Choose your movie:</h2>
+                    <div class="carousel-inner" align="center" role="listbox">
+
+                        <div class="carousel-item active">
+                            <div class="card mb-2" id="movieCard0">
+                            </div>
+                        </div>
+
+                        <div class="carousel-item">
+                            <div class="card mb-2" id="movieCard1">
+                            </div>
+                        </div>
+
+                        <div class="carousel-item">
+                            <div class="card mb-2" id="movieCard2">
+                            </div>
+                        </div>
+
+                        <div class="carousel-item">
+                            <div class="card mb-2" id="movieCard3">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="controls-bottom" align="center">
+                        <a class="btn-floating" href="#carouselMovies" data-slide="prev"><i
+                                class="fas fa-chevron-left"></i></a>
+                        <a class="btn-floating" href="#carouselMovies" data-slide="next"><i
+                                class="fas fa-chevron-right"></i></a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="footer">
+                <div class="col-sm-12">
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#receiptModal">Review my order!</button>
+                    <button type="button" id="reload" class="btn btn-secondary">Restart</button><br><br>
+                </div>
+            </div>
+            <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+            <script src="https://code.jquery.com/jquery-3.4.1.js"
+                integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+                integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+                crossorigin="anonymous">
+                </script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+                integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+                crossorigin="anonymous">
+                </script>
+            <!-- Optional JavaScript -->
+            <script src="script.js"></script>
+            <!-- Testing script -->
+            <script>
+                $('#WelcomeModal').modal('show');
+            </script>
 
 </body>
 
