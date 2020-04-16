@@ -62,25 +62,25 @@ body{
     background-color: rgb(212, 212, 207);
 } */
 
-#WelcomeModal .modal-title {
-    text-align: center;
-    margin: auto;
-    font-family: 'Courgette', cursive;
-    font-size: 40pt;
+#drink-ingredients{
+    font-family: 'Montserrat', sans-serif;
 }
 
-/* .text-center>img {
-    margin: auto;
-    padding: .25rem;
-    max-width: 50%;
-    height: auto;
-    display: block;
+a, #readMore0, #readMore1, #readMore2, #readMore3, #finalSubmission, .modal-footer {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500 !important;
+    font-size: medium !important;
 }
 
-.card {
-    flex-direction: row;
-    background-color: transparent;
-} */
+.type{
+    font-weight: 600;
+    color: crimson;
+    font-style: italic;
+}
+
+#drink-name, #food-name{
+    font-family: 'Marko One', serif;
+}
 
 .card-img-top{
  max-width: 200px;

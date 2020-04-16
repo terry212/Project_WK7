@@ -134,6 +134,32 @@
         </div>
     </div>
 
+    <div class="modal fade" id="receiptModal" tabindex="-1" role="dialog" aria-labelledby="selectionSummary"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="selectionSummaryTitle">Summary</h5>
+                </div>
+                <div class="modal-body" id="userSelectionArea">
+                    <div class="row" id="userFoodChoice">
+
+                    </div>
+                    <div class="row" id="userDrinkChoice">
+
+                    </div>
+                    <div class="row" id="userMovieChoice">
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="landing-image">
         <!-- <div class="container"> -->
         <div class="jumbotron">
@@ -148,7 +174,8 @@
                 <div class="col-sm-4" id="finalSubmission">
                     <!-- Buttons for restarting or submitting selections -->
                     <button type="button" class="btn btn-secondary">Restart</button>
-                    <button type="button" class="btn btn-success"> All Set! </button>
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#receiptModal">
+                        All Set! </button>
                 </div>
 
             </div>

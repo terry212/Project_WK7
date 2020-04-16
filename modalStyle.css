@@ -9,3 +9,12 @@
 form {
     margin-top: 10%;
 }
+
+.modal-body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.modal-title {
+    font-family: 'Marko One', serif;
+    margin: auto;
+}
