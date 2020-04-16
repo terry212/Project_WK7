@@ -24,7 +24,7 @@
     <!-- needs to pop when user visits -->
     <div class="modal fade" id="WelcomeModal" tabindex="-1" role="dialog" aria-labelledby="WelcomeModalLabel"
         aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <div class="text-center">
@@ -32,9 +32,12 @@
                     </div>
                 </div>
                 <div class="modal-body">
+                    Welcome to Watch and Sip! The only way to quarantine and chill.
+                    Answer a few questions below to get started with movies, food and drinks to choose from.
+                    <hr>
                     <form>
                         <fieldset class="form-group">
-                            <!-- form to capture who is the user trying to watch a movie with -->
+                            <!-- Form to capture who is the user trying to watch a movie with -->
                             <div class="row" id="crowdForm">
                                 <legend class="col-form-label col-sm-5 pt-0">Who are you with?</legend>
                                 <div class="col-sm-7">
@@ -133,34 +136,34 @@
 
     <div class="landing-image">
         <!-- <div class="container"> -->
-            <div class="jumbotron">
-                <div class="row">
-                    <div class="col-sm-3"><img src="logo.png" alt="logo" width="250px"></div>
-                    <div class="col-sm-5">
-                        <div class="image-holder"><a href="https://timansy.github.io/04_homework/docs/04/"
-                                target="_blank" rel="noopener noreferrer"><img src="game.png" id="gameImg"
-                                    alt="triviagame" width="200px"></a>
-                        </div>
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-sm-4"><img src="logo.png" alt="logo" width="250px"></div>
+                <div class="col-sm-4">
+                    <div class="image-holder"><a href="https://timansy.github.io/04_homework/docs/04/" target="_blank"
+                            rel="noopener noreferrer"><img src="game.png" id="gameImg" alt="triviagame"
+                                width="200px"></a>
                     </div>
-                    <div class="col-sm-4" id="finalSubmission">
-                        <!-- Buttons for restarting or submitting selections -->
-                        <button type="button" class="btn btn-secondary">Restart</button>
-                        <button type="button" class="btn btn-success"> All Set! </button>
-                    </div>
-
                 </div>
-            </div>
-            <div class="row" id="food">
+                <div class="col-sm-4" id="finalSubmission">
+                    <!-- Buttons for restarting or submitting selections -->
+                    <button type="button" class="btn btn-secondary">Restart</button>
+                    <button type="button" class="btn btn-success"> All Set! </button>
+                </div>
 
             </div>
+        </div>
+        <div class="row" id="food">
 
-            <div class="row" id="drinks">
+        </div>
 
-            </div>
+        <div class="row" id="drinks">
 
-            <div class="row" id="movies">
+        </div>
 
-            </div>
+        <div class="row" id="movies">
+
+        </div>
 
         <!-- </div> -->
     </div>
