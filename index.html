@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="modalStyle.css">
+    <!-- google fonts -->
     <link
         href="https://fonts.googleapis.com/css?family=Courgette|Marko+One|Montserrat:400,500,600|Playball&display=swap"
         rel="stylesheet">
@@ -13,7 +14,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-xVVam1KS4+Qt2OrFa+VdRUoXygyKIuNWUUUBZYv+n27STsJ7oDOHJgfF0bNKLMJF" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-xVVam1KS4+Qt2OrFa+VdRUoXygyKIuNWUUUBZYv+n27STsJ7oDOHJgfF0bNKLMJF" crossorigin="anonymous">
     <title>Watch and Sip</title>
 </head>
 
@@ -28,14 +30,11 @@
                     <div class="text-center">
                         <img src="./Assets/Images/logo.png" alt="Watch and Sip">
                     </div>
-                    <!-- <h5 class="modal-title">Watch 'n Sip</h5> -->
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
                 </div>
                 <div class="modal-body">
                     <form>
                         <fieldset class="form-group">
+                            <!-- form to capture who is the user trying to watch a movie with -->
                             <div class="row" id="crowdForm">
                                 <legend class="col-form-label col-sm-5 pt-0">Who are you with?</legend>
                                 <div class="col-sm-7">
@@ -67,6 +66,7 @@
                                 </div>
                             </div>
                             <hr>
+                            <!-- form to capture the user's mood -->
                             <div class="row" id="moodForm">
                                 <legend class="col-form-label col-sm-5 pt-0">What is the mood for today?</legend>
                                 <div class="col-sm-7">
@@ -132,31 +132,42 @@
     </div>
 
     <div class="landing-image">
-        <div class="container">
-            <div class="row">
-                <div class="image-holder"><a href="https://timansy.github.io/04_homework/docs/04/" target="_blank"
-                        rel="noopener noreferrer"><img src="game.png" id="gameImg" alt="triviagame" width="200px"></a>
-                </div>
-                <div class="col-lg-3"><img src="logo.png" alt="logo" width="250px"></div>
-                <div class="row" id="movies">
+        <!-- <div class="container"> -->
+            <div class="jumbotron">
+                <div class="row">
+                    <div class="col-sm-3"><img src="logo.png" alt="logo" width="250px"></div>
+                    <div class="col-sm-5">
+                        <div class="image-holder"><a href="https://timansy.github.io/04_homework/docs/04/"
+                                target="_blank" rel="noopener noreferrer"><img src="game.png" id="gameImg"
+                                    alt="triviagame" width="200px"></a>
+                        </div>
+                    </div>
+                    <div class="col-sm-4" id="finalSubmission">
+                        <!-- Buttons for restarting or submitting selections -->
+                        <button type="button" class="btn btn-secondary">Restart</button>
+                        <button type="button" class="btn btn-success"> All Set! </button>
+                    </div>
 
-                </div>
-                <div class="row" id="food">
-                    
-                </div>
-
-                <div class="row" id="drinks">
-                    
                 </div>
             </div>
-        </div>
+            <div class="row" id="food">
+
+            </div>
+
+            <div class="row" id="drinks">
+
+            </div>
+
+            <div class="row" id="movies">
+
+            </div>
+
+        <!-- </div> -->
     </div>
-    
+
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script
-    src="https://code.jquery.com/jquery-3.4.1.js"
-    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-    crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
     </script>
@@ -164,7 +175,7 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
     <!-- Optional JavaScript -->
-    <script src="script.js"></script>
+    <script src="./quaranteam-project-develop/script.js"></script>
     <!-- Testing script -->
     <script>
         $('#WelcomeModal').modal('show');
