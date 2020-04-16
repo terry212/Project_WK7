@@ -151,7 +151,7 @@ function generateMovie(){
             var movieContainer = $("#movies");
                 
             var movieCard =`
-                            <div class="card col-md" id="movie${i}">
+                            <div class="card col-md-3" id="movie${i}">
                                 <img class="card-img-top" id='poster' src="https://image.tmdb.org/t/p/w185${movieArray[i].poster_path}" alt="${movieArray[i].title}">
                                 <button type="button" class="readMore btn btn-light btn-lg" id="readMore${i}">Read More</button>
                                 <div class="card-body" style="display:none" id="movie-content${i}">
