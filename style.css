@@ -80,10 +80,6 @@ a,
   display: none;
 }
 
-/* #userMovieChoice .selectBtn {
-  display: none !important;
-} */
-
 #userDrinkChoice button {
   display: none;
 }
@@ -152,7 +148,7 @@ a,
   background-attachment: fixed;
   background-position: center center;
   background-size: cover;
-  /* height: 110vh; */
+  height: 110vh;
   width: 100%;
   padding: 1%;
 }

@@ -5,8 +5,12 @@ var userInput;
 var userInput2;
 var lastRandom = [];
 var movieArray = [];
+var mealArray = [];
+var randomMealArray = [];
 var randomMovie;
 var newMovie;
+var randomMeal;
+var newMeal;
 var page = Math.floor(Math.random() * 12) + 1;
 var drinkQueryURL = "https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php";
 
@@ -16,14 +20,12 @@ $("#WelcomeModal").modal({
     keyboard: false
 });
 
-// On load, hide question 2 and the "enter" button and generate a "next" button
 $(document).ready(function () {
 
     // By default, hide form questions
     $("#crowdForm").hide();
     $(".jumbotron").hide();
     $("#moodForm").hide();
-    $("hr").hide();
     $(".modal-footer").hide();
     $(".footer").hide();
 
@@ -48,7 +50,6 @@ $(document).ready(function () {
     $("#next").on("click", function () {
         $("#crowdForm").hide();
         $("#moodForm").show();
-        $("hr").hide();
         $("#next").hide();
         $(".modal-footer").show();
     });
@@ -58,19 +59,20 @@ $(document).ready(function () {
         location.reload(true);
     });
 
+    // Within "review order", when restart button clicked, reload page
     $("#footerReload").click(function () {
         location.reload(true);
     });
 })
 
-// Function registers a radio button click
+// Function registers a radio button click, determines value of user input and checks
 $("input[type='radio']").click(function () {
     userInput = $("input[name='mood']:checked").val();
     userInput2 = $("input[name='company']:checked").val();
     checkUserInput();
 })
 
-// Function to prevent repeat movies
+// Function to check movie array and prevent repeat movies
 function checkMovie(randomMovie) {
     if (lastRandom.indexOf(randomMovie) == -1) {
         lastRandom.push(randomMovie);
@@ -80,6 +82,18 @@ function checkMovie(randomMovie) {
         checkMovie(randomMovie);
     }
     return newMovie;
+}
+
+// Function to check meal array and prevent repeat meals
+function checkMeal(randomMeal) {
+    if (randomMealArray.indexOf(randomMeal) == -1) {
+        randomMealArray.push(randomMeal);
+        newMeal = randomMeal;
+    } else {
+        randomMeal = Math.floor((Math.random() * mealArray.length));
+        checkMeal(randomMeal);
+    }
+    return newMeal;
 }
 
 // Function checks user input and determines movie, drink, and meal query URLs based on TMDB API
@@ -122,7 +136,6 @@ function checkUserInput() {
     switch (userInput2) {
         case "family":
             movieQueryURL = "https://api.themoviedb.org/3/discover/movie?with_genres=10751&certification.lte=G&api_key=e8f1cf6169288a814923ee8e5fe9e6f9&page=" + page;
-            drinkQueryURL = "https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php";
             mealQueryURL = "https://www.themealdb.com/api/json/v2/9973533/randomselection.php";
             $(".custom").empty();
             $(".custom").append(" " + userInput2);
@@ -148,7 +161,7 @@ function checkUserInput() {
     }
 }
 
-// After answering both questions, create movie cards and randomly generate 3 movies based on user input
+// After answering questions, create meal, movie, and drink carousels and call functions to generate content
 $("#submitButton").on("click", function () {
     if (movieQueryURL == undefined) {
         movieQueryURL = "https://api.themoviedb.org/3/discover/movie?with_genres=28,12&api_key=e8f1cf6169288a814923ee8e5fe9e6f9&page=" + page;
@@ -167,7 +180,7 @@ $("#submitButton").on("click", function () {
 
 })
 
-
+// Function generates movie card content randomly
 function generateMovie() {
     $.ajax({
         url: movieQueryURL,
@@ -271,6 +284,7 @@ function generateMovie() {
     $("#WelcomeModal").modal("hide");
 }
 
+// Appends and removes movie to the review order screen
 $("body").delegate('.select', "click", function () {
     var selectedMovie = $(this)[0].offsetParent;
 
@@ -286,24 +300,26 @@ $("body").delegate('.select', "click", function () {
 
 });
 
-
+// Function generates meal card content randomly
 function generateFood() {
-
     $.ajax({
         url: mealQueryURL,
         method: "GET"
     }).then(function (response) {
-        console.log(response);
+        mealArray = response.meals;
 
         var foodContainer = $('#carouselMeals .carousel-inner');
 
         for (var i = 0; i < 4; i++) {
 
+            randomMeal = Math.floor((Math.random() * mealArray.length));
+            checkMeal(randomMeal);
+
             var foodCardFirst = `<div class="carousel-item foodCard active">
                                     <div class="card col-md text-center">
-                                        <img class="card-img-top" src="${response.meals[i].strMealThumb}" alt="${response.meals[i].strMeal}">
+                                        <img class="card-img-top" src="${mealArray[randomMeal].strMealThumb}" alt="${mealArray[randomMeal].strMeal}">
                                         <div class="card-body" id="food-content">
-                                            <h5 class="card-title" id="food-name">${response.meals[i].strMeal}</h5>
+                                            <h5 class="card-title" id="food-name">${mealArray[randomMeal].strMeal}</h5>
                                         </div>
                                         <p><span class="mealSelected${i}" style="color: green"></span></p>
                                         <button type="button" class="selectFood btn btn-primary btn-sm" id="meal${i}">Select Food</button>
@@ -312,9 +328,9 @@ function generateFood() {
                                 `
             var foodCard = ` <div class="carousel-item foodCard">
                                 <div class="card col-md text-center">
-                                    <img class="card-img-top" src="${response.meals[i].strMealThumb}" alt="${response.meals[i].strMeal}">
+                                    <img class="card-img-top" src="${mealArray[randomMeal].strMealThumb}" alt="${mealArray[randomMeal].strMeal}">
                                     <div class="card-body" id="food-content">
-                                        <h5 class="card-title" id="food-name">${response.meals[i].strMeal}</h5>
+                                        <h5 class="card-title" id="food-name">${mealArray[randomMeal].strMeal}</h5>
                                     </div>
                                     <p><span class="mealSelected${i}" style="color: green"></span></p>
                                     <button type="button" class="selectFood btn btn-primary btn-sm" id="meal${i}">Select Food</button>
@@ -381,6 +397,7 @@ function generateFood() {
 
 }
 
+// Appends and removes to and from the review order modal
 $("body").delegate('.selectFood', "click", function () {
     console.log($(this)[0].offsetParent);
     console.log($('#userFoodChoice')[0].innerHTML);
@@ -399,10 +416,9 @@ $("body").delegate('.selectFood', "click", function () {
 
 });
 
+// Function generates drink card content randomly
 function generateDrink() {
-
     var drinkContainer = $('#carouselDrinks .carousel-inner');
-
     $.ajax({
         url: drinkQueryURL,
         method: "GET"
@@ -561,6 +577,7 @@ function generateDrink() {
 
 }
 
+// Appends and removes to and from the final review order modal
 $("body").delegate('.selectDrink', "click", function () {
     console.log($(this)[0].offsetParent);
     console.log($('#userDrinkChoice')[0].innerHTML);
