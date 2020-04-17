@@ -48,7 +48,6 @@ a,
 #carouselMeals>h2,
 #carouselDrinks>h2,
 #carouselMovies>h2 {
-  /* font-family: 'Marko One', serif; */
   font-family: 'Courgette', cursive;
   font-weight: 600;
 }
