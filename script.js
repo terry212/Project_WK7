@@ -142,13 +142,13 @@ function checkUserInput() {
             break;
 
         case "solo":
-            mealQueryURL = "https://www.themealdb.com/api/json/v1/1/filter.php?c=dessert"
+            mealQueryURL = "https://www.themealdb.com/api/json/v2/9973533/randomselection.php"
             $(".custom").empty();
             $(".custom").append("self");
             break;
 
         case "friends":
-            mealQueryURL = "https://www.themealdb.com/api/json/v1/1/filter.php?c=side";
+            mealQueryURL = "https://www.themealdb.com/api/json/v2/9973533/randomselection.php";
             $(".custom").empty();
             $(".custom").append(" " + userInput2);
             break;
@@ -169,7 +169,7 @@ $("#submitButton").on("click", function () {
     }
 
     if (mealQueryURL == undefined) {
-        mealQueryURL = "https://www.themealdb.com/api/json/v1/1/filter.php?c=dessert";
+        mealQueryURL = "https://www.themealdb.com/api/json/v2/9973533/randomselection.php";
     }
 
     generateMovie();
@@ -315,12 +315,80 @@ function generateFood() {
             randomMeal = Math.floor((Math.random() * mealArray.length));
             checkMeal(randomMeal);
 
+            var mealIns = '';
+            var youtube = mealArray[randomMeal].strYoutube;
+
+            if (mealArray[randomMeal].strIngredient1 != "") {
+                mealIns = mealIns + mealArray[randomMeal].strIngredient1 + "<br>";
+            }
+
+            if (mealArray[randomMeal].strIngredient2 != "") {
+                mealIns = mealIns + mealArray[randomMeal].strIngredient2 + "<br>";
+            }
+
+            if (mealArray[randomMeal].strIngredient3 != "") {
+                mealIns = mealIns + mealArray[randomMeal].strIngredient3 + "<br>";
+            }
+
+            if (mealArray[randomMeal].strIngredient4 != "") {
+                mealIns = mealIns + mealArray[randomMeal].strIngredient4 + "<br>";
+            }
+
+            if (mealArray[randomMeal].strIngredient5 != "") {
+                mealIns = mealIns + mealArray[randomMeal].strIngredient5 + "<br>";
+            }
+
+            if (mealArray[randomMeal].strIngredient6 != "") {
+                mealIns = mealIns + mealArray[randomMeal].strIngredient6 + "<br>";
+            }
+
+            if (mealArray[randomMeal].strIngredient7 != "") {
+                mealIns = mealIns + mealArray[randomMeal].strIngredient7 + "<br>";
+            }
+
+            if (mealArray[randomMeal].strIngredient8 != "") {
+                mealIns = mealIns + mealArray[randomMeal].strIngredient8 + "<br>";
+            }
+
+            if (mealArray[randomMeal].strIngredient9 != "") {
+                mealIns = mealIns + mealArray[randomMeal].strIngredient9 + "<br>";
+            }
+
+            if (mealArray[randomMeal].strIngredient10 != "") {
+                mealIns = mealIns + mealArray[randomMeal].strIngredient10 + "<br>";
+            }
+
+            if (mealArray[randomMeal].strIngredient11 != "") {
+                mealIns = mealIns + mealArray[randomMeal].strIngredient11 + "<br>";
+            }
+
+            if (mealArray[randomMeal].strIngredient12 != "") {
+                mealIns = mealIns + mealArray[randomMeal].strIngredient12 + "<br>";
+            }
+
+            if (mealArray[randomMeal].strIngredient13 != "") {
+                mealIns = mealIns + mealArray[randomMeal].strIngredient13 + "<br>";
+            }
+
+            if (mealArray[randomMeal].strIngredient14 != "") {
+                mealIns = mealIns + mealArray[randomMeal].strIngredient14 + "<br>";
+            }
+
+            if (mealArray[randomMeal].strIngredient15 != "") {
+                mealIns = mealIns + mealArray[randomMeal].strIngredient15 + "<br>";
+            }
+
             var foodCardFirst = `<div class="carousel-item foodCard active">
                                     <div class="card col-md text-center">
                                         <img class="card-img-top" src="${mealArray[randomMeal].strMealThumb}" alt="${mealArray[randomMeal].strMeal}">
                                         <div class="card-body" id="food-content">
                                             <h5 class="card-title" id="food-name">${mealArray[randomMeal].strMeal}</h5>
+                                            <div class="meta">
+                                            <span class="type">${mealArray[randomMeal].strArea} | ${mealArray[randomMeal].strCategory}</span>
                                         </div>
+                                        </div>
+                                        <p class="card-text" id="food-ingredients"> Ingredients: <br>${mealIns}</p>
+                                        <a href="${youtube}" target='_blank'>Watch step-by-step on Youtube!</a>
                                         <p><span class="mealSelected${i}" style="color: green"></span></p>
                                         <button type="button" class="selectFood btn btn-primary btn-sm" id="meal${i}">Select Food</button>
                                     </div>
@@ -332,6 +400,8 @@ function generateFood() {
                                     <div class="card-body" id="food-content">
                                         <h5 class="card-title" id="food-name">${mealArray[randomMeal].strMeal}</h5>
                                     </div>
+                                    <p class="card-text" id="food-ingredients">Ingredients: <br>${mealIns}</p>
+                                    <a href="${youtube}" target='_blank'>Watch step-by-step on Youtube!</a>
                                     <p><span class="mealSelected${i}" style="color: green"></span></p>
                                     <button type="button" class="selectFood btn btn-primary btn-sm" id="meal${i}">Select Food</button>
                                 </div>
@@ -407,6 +477,7 @@ $("body").delegate('.selectFood', "click", function () {
     if ($('#userFoodChoice')[0].innerHTML == "") {
         $(selectedFood).clone().appendTo('#userFoodChoice');
         $('#userFoodChoice').find('i').parent().empty();
+
     } else {
         $('#userFoodChoice').empty();
         $(selectedFood).clone().appendTo('#userFoodChoice');
@@ -427,7 +498,7 @@ function generateDrink() {
 
 
         for (var i = 0; i < 4; i++) {
-            var drinkIns = '';
+            var drinksIn = '';
 
             if (response.drinks[i].strIngredient1 != null) {
                 drinksIn = response.drinks[i].strIngredient1 + "<br>";
