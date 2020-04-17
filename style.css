@@ -1,4 +1,3 @@
-/* Elements */
 body {
     background-color: lightslategrey;
 }
@@ -11,8 +10,15 @@ img#gameImg {
     border: 10px solid black;
 }
 
+legend {
+  text-align: left;
+}
 
-/* IDs */
+h2 {
+  padding: 20px;
+  text-align: center;
+}
+
 #movieDisplay {
     max-width: 65vw;
 
@@ -29,10 +35,6 @@ img#gameImg {
 }
 
 a,
-#readMore0,
-#readMore1,
-#readMore2,
-#readMore3,
 #finalSubmission,
 .modal-footer {
     font-family: 'Montserrat', sans-serif;
@@ -45,18 +47,11 @@ a,
     font-family: 'Marko One', serif;
 }
 
-#readMore0,
-#readMore1,
-#readMore2,
-#readMore3 {
-    margin: auto;
-}
-
 #next {
     text-align: right;
 }
 
-#carouselMeals, #carouselDrinks, #carouselMovies {
+#movie-content, #drink-content, #food-content {
     margin-top: 50px;
     text-align: center;
 }
@@ -65,8 +60,26 @@ a,
     font-family: 'Marko One', serif;
 }
 
+#poster {
+  max-width: 200px !important;
+}
 
-/* Classes */
+#userFoodChoice button {
+  display: none;
+}
+
+#userMovieChoice button {
+  display: none;
+}
+
+/* #userMovieChoice .selectBtn {
+  display: none !important;
+} */
+
+#userDrinkChoice button {
+  display: none;
+}
+
 .footer {
     position: fixed;
     bottom: 0;
@@ -76,9 +89,19 @@ a,
     background-color: #e9ecef;
 }
 
+.form-check {
+  text-align: left;
+}
+
+.opacity {
+  background-color: rgba(255, 255, 255, 0.664)
+}
+
 .card {
-    height: 600px;
+    height: 400px;
     overflow: auto;
+    background-color: rgba(255, 255, 255, 0.664);
+    align-items: center;
 }
 
 #carouselMeals .card, #carouselDrinks .card{
@@ -107,11 +130,11 @@ a,
 }
 
 .landing-image {
-    background-image: url('inside-theater.png');
+    /* background-image: url('inside-theater.png'); */
     background-attachment: fixed;
     background-position: center center;
     background-size: cover;
-    height: 100vh;
+    height: 110vh;
     width: 100%;
     padding: 1%;
 }
@@ -124,8 +147,12 @@ a,
     height: 95vh;
 }
 
-.image-holder {
-    border: 1px solid black;
+.jumbotron {
+  background-color: rgba(255, 255, 255, 0.719);
+}
+
+.modal-body {
+  text-align: center;
 }
 
 /* Social Sharing Buttons */
@@ -181,13 +208,6 @@ a,
   background-color: #2795e9
 }
 
-.resp-sharing-button--pinterest {
-  background-color: #bd081c
-}
-
-.resp-sharing-button--pinterest:hover {
-  background-color: #8c0615
-}
 
 .resp-sharing-button--facebook {
   background-color: #3b5998
@@ -197,37 +217,6 @@ a,
   background-color: #2d4373
 }
 
-.resp-sharing-button--tumblr {
-  background-color: #35465C
-}
-
-.resp-sharing-button--tumblr:hover {
-  background-color: #222d3c
-}
-
-.resp-sharing-button--reddit {
-  background-color: #5f99cf
-}
-
-.resp-sharing-button--reddit:hover {
-  background-color: #3a80c1
-}
-
-.resp-sharing-button--google {
-  background-color: #dd4b39
-}
-
-.resp-sharing-button--google:hover {
-  background-color: #c23321
-}
-
-.resp-sharing-button--linkedin {
-  background-color: #0077b5
-}
-
-.resp-sharing-button--linkedin:hover {
-  background-color: #046293
-}
 
 .resp-sharing-button--email {
   background-color: #777
@@ -235,35 +224,6 @@ a,
 
 .resp-sharing-button--email:hover {
   background-color: #5e5e5e
-}
-
-.resp-sharing-button--xing {
-  background-color: #1a7576
-}
-
-.resp-sharing-button--xing:hover {
-  background-color: #114c4c
-}
-
-.resp-sharing-button--whatsapp {
-  background-color: #25D366
-}
-
-.resp-sharing-button--whatsapp:hover {
-  background-color: #1da851
-}
-
-.resp-sharing-button--hackernews {
-background-color: #FF6600
-}
-.resp-sharing-button--hackernews:hover, .resp-sharing-button--hackernews:focus {   background-color: #FB6200 }
-
-.resp-sharing-button--vk {
-  background-color: #507299
-}
-
-.resp-sharing-button--vk:hover {
-  background-color: #43648c
 }
 
 .resp-sharing-button--facebook {
@@ -288,17 +248,6 @@ background-color: #FF6600
   border-color: #2795e9;
 }
 
-.resp-sharing-button--tumblr {
-  background-color: #35465C;
-  border-color: #35465C;
-}
-
-.resp-sharing-button--tumblr:hover,
-.resp-sharing-button--tumblr:active {
-  background-color: #222d3c;
-  border-color: #222d3c;
-}
-
 .resp-sharing-button--email {
   background-color: #777777;
   border-color: #777777;
@@ -308,15 +257,4 @@ background-color: #FF6600
 .resp-sharing-button--email:active {
   background-color: #5e5e5e;
   border-color: #5e5e5e;
-}
-
-.resp-sharing-button--pinterest {
-  background-color: #bd081c;
-  border-color: #bd081c;
-}
-
-.resp-sharing-button--pinterest:hover,
-.resp-sharing-button--pinterest:active {
-  background-color: #8c0615;
-  border-color: #8c0615;
 }
