@@ -103,6 +103,7 @@ a,
   height: 60px;
   line-height: 60px;
   background-color: #e9ecef;
+  text-align: center;
 }
 
 .form-check {
@@ -125,13 +126,6 @@ a,
   height: 400px;
   padding: 10px;
 }
-
-/* #carouselMeals>h2,
-#carouselDrinks>h2,
-#carouselMovies>h2 {
-  font-family: 'Courgette', cursive;
-  font-weight: 600;
-} */
 
 .card-img-top {
   max-width: 200px;

@@ -25,6 +25,7 @@ $(document).ready(function () {
     $("#moodForm").hide();
     $("hr").hide();
     $(".modal-footer").hide();
+    $(".footer").hide();
 
     // Create a new button to get started
     var getStarted = $("<div id='getStarted'><button class='btn btn-primary' type='button'>Get Started!</button></div>");
@@ -158,6 +159,8 @@ $("#submitButton").on("click", function () {
     generateFood();
     generateDrink();
     $(".jumbotron").show();
+    $(".footer").show();
+
 })
 
 
