@@ -57,6 +57,10 @@ $(document).ready(function () {
     $("#reload").click(function () {
         location.reload(true);
     });
+
+    $("#footerReload").click(function () {
+        location.reload(true);
+    });
 })
 
 // Function registers a radio button click
@@ -226,9 +230,9 @@ function generateMovie() {
                         $('.selectBtn3').text("");
                     } else {
                         $('.selectBtn0').text("");
-                    }                    
+                    }
                     break;
-                
+
                 case "select1":
                     if ($('.selectBtn1').text() == '') {
                         $('.selectBtn1').append("<i class='fas fa-check'></i> Selected!");
@@ -237,7 +241,7 @@ function generateMovie() {
                         $('.selectBtn3').text("");
                     } else {
                         $('.selectBtn1').text("");
-                    }    
+                    }
                     break;
 
                 case "select2":
@@ -259,43 +263,43 @@ function generateMovie() {
                         $('.selectBtn2').text("");
                     } else {
                         $('.selectBtn3').html("");
-                    }    
+                    }
                     break;
-                }
+            }
         })
     })
-        $("#WelcomeModal").modal("hide");
+    $("#WelcomeModal").modal("hide");
 }
 
 $("body").delegate('.select', "click", function () {
-        var selectedMovie = $(this)[0].offsetParent;
+    var selectedMovie = $(this)[0].offsetParent;
 
-        if ($('#userMovieChoice')[0].innerHTML == "") {
-            $(selectedMovie).clone().appendTo('#userMovieChoice')
-            $('#userMovieChoice').find('i').parent().empty();
-        } else {
-            $('#userMovieChoice').empty();
-            $(selectedMovie).clone().appendTo('#userMovieChoice')
-            $('#userMovieChoice').find('i').parent().empty();
-        }
-
-
-    });
+    if ($('#userMovieChoice')[0].innerHTML == "") {
+        $(selectedMovie).clone().appendTo('#userMovieChoice')
+        $('#userMovieChoice').find('i').parent().empty();
+    } else {
+        $('#userMovieChoice').empty();
+        $(selectedMovie).clone().appendTo('#userMovieChoice')
+        $('#userMovieChoice').find('i').parent().empty();
+    }
 
 
-    function generateFood() {
+});
 
-        $.ajax({
-            url: mealQueryURL,
-            method: "GET"
-        }).then(function (response) {
-            console.log(response);
 
-            var foodContainer = $('#carouselMeals .carousel-inner');
+function generateFood() {
 
-            for (var i = 0; i < 4; i++) {
+    $.ajax({
+        url: mealQueryURL,
+        method: "GET"
+    }).then(function (response) {
+        console.log(response);
 
-                var foodCardFirst = `<div class="carousel-item foodCard active">
+        var foodContainer = $('#carouselMeals .carousel-inner');
+
+        for (var i = 0; i < 4; i++) {
+
+            var foodCardFirst = `<div class="carousel-item foodCard active">
                                     <div class="card col-md text-center">
                                         <img class="card-img-top" src="${response.meals[i].strMealThumb}" alt="${response.meals[i].strMeal}">
                                         <div class="card-body" id="food-content">
@@ -306,7 +310,7 @@ $("body").delegate('.select', "click", function () {
                                     </div>
                                 </div>
                                 `
-                var foodCard = ` <div class="carousel-item foodCard">
+            var foodCard = ` <div class="carousel-item foodCard">
                                 <div class="card col-md text-center">
                                     <img class="card-img-top" src="${response.meals[i].strMealThumb}" alt="${response.meals[i].strMeal}">
                                     <div class="card-body" id="food-content">
@@ -318,158 +322,158 @@ $("body").delegate('.select', "click", function () {
                             </div>
                             `
 
-                if (i == 0) {
-                    foodContainer.append(foodCardFirst);
-                } else {
-                    foodContainer.append(foodCard);
-                }
-
+            if (i == 0) {
+                foodContainer.append(foodCardFirst);
+            } else {
+                foodContainer.append(foodCard);
             }
-            $(".selectFood").on("click", function () {
-                switch ($(this).attr('id')) {
-                    case "meal0":
-                        if ($('.mealSelected0').text() == '') {
-                            $('.mealSelected0').append("<i class='fas fa-check'></i> Selected!");
-                            $('.mealSelected1').text("");
-                            $('.mealSelected2').text("");
-                            $('.mealSelected3').text("");
-                        } else {
-                            $('.mealSelected0').text("");
-                        }                    
-                        break;
-                    
-                    case "meal1":
-                        if ($('.mealSelected1').text() == '') {
-                            $('.mealSelected1').append("<i class='fas fa-check'></i> Selected!");
-                            $('.mealSelected0').text("");
-                            $('.mealSelected2').text("");
-                            $('.mealSelected3').text("");
-                        } else {
-                            $('.mealSelected1').text("");
-                        }    
-                        break;
-    
-                    case "meal2":
-                        if ($('.mealSelected2').text() == '') {
-                            $('.mealSelected2').append("<i class='fas fa-check'></i> Selected!");
-                            $('.mealSelected0').text("");
-                            $('.mealSelected1').text("");
-                            $('.mealSelected3').text("");
-                        } else {
-                            $('.mealSelected2').text("");
-                        }
-                        break;
-    
-                    case "meal3":
-                        if ($('.mealSelected3').text() == '') {
-                            $('.mealSelected3').append("<i class='fas fa-check'></i> Selected!");
-                            $('.mealSelected0').text("");
-                            $('.mealSelected1').text("");
-                            $('.mealSelected2').text("");
-                        } else {
-                            $('.mealSelected3').text("");
-                        }    
-                        break;
-                    }
-            })
 
-        });
-
-    }
-
-    $("body").delegate('.selectFood', "click", function () {
-        console.log($(this)[0].offsetParent);
-        console.log($('#userFoodChoice')[0].innerHTML);
-
-        var selectedFood = $(this)[0].offsetParent;
-
-        if ($('#userFoodChoice')[0].innerHTML == "") {
-            $(selectedFood).clone().appendTo('#userFoodChoice');
-            $('#userFoodChoice').find('i').parent().empty();
-        } else {
-            $('#userFoodChoice').empty();
-            $(selectedFood).clone().appendTo('#userFoodChoice');
-            $('#userFoodChoice').find('i').parent().empty();
         }
+        $(".selectFood").on("click", function () {
+            switch ($(this).attr('id')) {
+                case "meal0":
+                    if ($('.mealSelected0').text() == '') {
+                        $('.mealSelected0').append("<i class='fas fa-check'></i> Selected!");
+                        $('.mealSelected1').text("");
+                        $('.mealSelected2').text("");
+                        $('.mealSelected3').text("");
+                    } else {
+                        $('.mealSelected0').text("");
+                    }
+                    break;
 
+                case "meal1":
+                    if ($('.mealSelected1').text() == '') {
+                        $('.mealSelected1').append("<i class='fas fa-check'></i> Selected!");
+                        $('.mealSelected0').text("");
+                        $('.mealSelected2').text("");
+                        $('.mealSelected3').text("");
+                    } else {
+                        $('.mealSelected1').text("");
+                    }
+                    break;
+
+                case "meal2":
+                    if ($('.mealSelected2').text() == '') {
+                        $('.mealSelected2').append("<i class='fas fa-check'></i> Selected!");
+                        $('.mealSelected0').text("");
+                        $('.mealSelected1').text("");
+                        $('.mealSelected3').text("");
+                    } else {
+                        $('.mealSelected2').text("");
+                    }
+                    break;
+
+                case "meal3":
+                    if ($('.mealSelected3').text() == '') {
+                        $('.mealSelected3').append("<i class='fas fa-check'></i> Selected!");
+                        $('.mealSelected0').text("");
+                        $('.mealSelected1').text("");
+                        $('.mealSelected2').text("");
+                    } else {
+                        $('.mealSelected3').text("");
+                    }
+                    break;
+            }
+        })
 
     });
 
-    function generateDrink() {
+}
 
-        var drinkContainer = $('#carouselDrinks .carousel-inner');
+$("body").delegate('.selectFood', "click", function () {
+    console.log($(this)[0].offsetParent);
+    console.log($('#userFoodChoice')[0].innerHTML);
 
-        $.ajax({
-            url: drinkQueryURL,
-            method: "GET"
-        }).then(function (response) {
-            console.log(response);
+    var selectedFood = $(this)[0].offsetParent;
+
+    if ($('#userFoodChoice')[0].innerHTML == "") {
+        $(selectedFood).clone().appendTo('#userFoodChoice');
+        $('#userFoodChoice').find('i').parent().empty();
+    } else {
+        $('#userFoodChoice').empty();
+        $(selectedFood).clone().appendTo('#userFoodChoice');
+        $('#userFoodChoice').find('i').parent().empty();
+    }
 
 
-            for (var i = 0; i < 4; i++) {
-                var drinkIns = '';
+});
 
-                if (response.drinks[i].strIngredient1 != null) {
-                    drinksIn = response.drinks[i].strIngredient1 + "<br>";
-                }
+function generateDrink() {
 
-                if (response.drinks[i].strIngredient2 != null) {
-                    drinksIn = drinksIn + response.drinks[i].strIngredient2 + "<br>";
-                }
+    var drinkContainer = $('#carouselDrinks .carousel-inner');
 
-                if (response.drinks[i].strIngredient3 != null) {
-                    drinksIn = drinksIn + response.drinks[i].strIngredient3 + "<br>";
-                }
+    $.ajax({
+        url: drinkQueryURL,
+        method: "GET"
+    }).then(function (response) {
+        console.log(response);
 
-                if (response.drinks[i].strIngredient4 != null) {
-                    drinksIn = drinksIn + response.drinks[i].strIngredient4 + "<br>";
-                }
 
-                if (response.drinks[i].strIngredient5 != null) {
-                    drinksIn = drinksIn + response.drinks[i].strIngredient5 + "<br>";
-                }
+        for (var i = 0; i < 4; i++) {
+            var drinkIns = '';
 
-                if (response.drinks[i].strIngredient6 != null) {
-                    drinksIn = drinksIn + response.drinks[i].strIngredient6 + "<br>";
-                }
+            if (response.drinks[i].strIngredient1 != null) {
+                drinksIn = response.drinks[i].strIngredient1 + "<br>";
+            }
 
-                if (response.drinks[i].strIngredient7 != null) {
-                    drinksIn = drinksIn + response.drinks[i].strIngredient7 + "<br>";
-                }
+            if (response.drinks[i].strIngredient2 != null) {
+                drinksIn = drinksIn + response.drinks[i].strIngredient2 + "<br>";
+            }
 
-                if (response.drinks[i].strIngredient8 != null) {
-                    drinksIn = drinksIn + response.drinks[i].strIngredient8 + "<br>";
-                }
+            if (response.drinks[i].strIngredient3 != null) {
+                drinksIn = drinksIn + response.drinks[i].strIngredient3 + "<br>";
+            }
 
-                if (response.drinks[i].strIngredient9 != null) {
-                    drinksIn = drinksIn + response.drinks[i].strIngredient9 + "<br>";
-                }
+            if (response.drinks[i].strIngredient4 != null) {
+                drinksIn = drinksIn + response.drinks[i].strIngredient4 + "<br>";
+            }
 
-                if (response.drinks[i].strIngredient10 != null) {
-                    drinksIn = drinksIn + response.drinks[i].strIngredient10 + "<br>";
-                }
+            if (response.drinks[i].strIngredient5 != null) {
+                drinksIn = drinksIn + response.drinks[i].strIngredient5 + "<br>";
+            }
 
-                if (response.drinks[i].strIngredient11 != null) {
-                    drinksIn = drinksIn + response.drinks[i].strIngredient11 + "<br>";
-                }
+            if (response.drinks[i].strIngredient6 != null) {
+                drinksIn = drinksIn + response.drinks[i].strIngredient6 + "<br>";
+            }
 
-                if (response.drinks[i].strIngredient12 != null) {
-                    drinksIn = drinksIn + response.drinks[i].strIngredient12 + "<br>";
-                }
+            if (response.drinks[i].strIngredient7 != null) {
+                drinksIn = drinksIn + response.drinks[i].strIngredient7 + "<br>";
+            }
 
-                if (response.drinks[i].strIngredient13 != null) {
-                    drinksIn = drinksIn + response.drinks[i].strIngredient13 + "<br>";
-                }
+            if (response.drinks[i].strIngredient8 != null) {
+                drinksIn = drinksIn + response.drinks[i].strIngredient8 + "<br>";
+            }
 
-                if (response.drinks[i].strIngredient14 != null) {
-                    drinksIn = drinksIn + response.drinks[i].strIngredient14 + "<br>";
-                }
+            if (response.drinks[i].strIngredient9 != null) {
+                drinksIn = drinksIn + response.drinks[i].strIngredient9 + "<br>";
+            }
 
-                if (response.drinks[i].strIngredient15 != null) {
-                    drinksIn = drinksIn + response.drinks[i].strIngredient15;
-                }
+            if (response.drinks[i].strIngredient10 != null) {
+                drinksIn = drinksIn + response.drinks[i].strIngredient10 + "<br>";
+            }
 
-                var drinkCard = `<div class="carousel-item drinkCard">
+            if (response.drinks[i].strIngredient11 != null) {
+                drinksIn = drinksIn + response.drinks[i].strIngredient11 + "<br>";
+            }
+
+            if (response.drinks[i].strIngredient12 != null) {
+                drinksIn = drinksIn + response.drinks[i].strIngredient12 + "<br>";
+            }
+
+            if (response.drinks[i].strIngredient13 != null) {
+                drinksIn = drinksIn + response.drinks[i].strIngredient13 + "<br>";
+            }
+
+            if (response.drinks[i].strIngredient14 != null) {
+                drinksIn = drinksIn + response.drinks[i].strIngredient14 + "<br>";
+            }
+
+            if (response.drinks[i].strIngredient15 != null) {
+                drinksIn = drinksIn + response.drinks[i].strIngredient15;
+            }
+
+            var drinkCard = `<div class="carousel-item drinkCard">
                                 <div class="card col-md text-center">
                                     <img class="card-img-top" src="${response.drinks[i].strDrinkThumb}" alt="${response.drinks[i].strDrink}">
                                     <div class="card-body" id="drink-content">
@@ -484,7 +488,7 @@ $("body").delegate('.select', "click", function () {
                                 </div>
                             </div>`
 
-                var drinkCardFirst = `<div class="carousel-item active drinkCard">
+            var drinkCardFirst = `<div class="carousel-item active drinkCard">
                                     <div class="card col-md text-center active">
                                         <img class="card-img-top" src="${response.drinks[i].strDrinkThumb}" alt="${response.drinks[i].strDrink}">
                                         <div class="card-body" id="drink-content">
@@ -499,78 +503,78 @@ $("body").delegate('.select', "click", function () {
                                     </div>
                                 </div>`
 
-                if (i == 0) {
-                    drinkContainer.append(drinkCardFirst);
-                } else {
-                    drinkContainer.append(drinkCard);
-                }
+            if (i == 0) {
+                drinkContainer.append(drinkCardFirst);
+            } else {
+                drinkContainer.append(drinkCard);
             }
-
-            $(".selectDrink").on("click", function () {
-                switch ($(this).attr('id')) {
-                    case "drink0":
-                        if ($('.drinkSelected0').text() == '') {
-                            $('.drinkSelected0').append("<i class='fas fa-check'></i> Selected!");
-                            $('.drinkSelected1').text("");
-                            $('.drinkSelected2').text("");
-                            $('.drinkSelected3').text("");
-                        } else {
-                            $('.drinkSelected0').text("");
-                        }                    
-                        break;
-                    
-                    case "drink1":
-                        if ($('.drinkSelected1').text() == '') {
-                            $('.drinkSelected1').append("<i class='fas fa-check'></i> Selected!");
-                            $('.drinkSelected0').text("");
-                            $('.drinkSelected2').text("");
-                            $('.drinkSelected3').text("");
-                        } else {
-                            $('.drinkSelected1').text("");
-                        }    
-                        break;
-    
-                    case "drink2":
-                        if ($('.drinkSelected2').text() == '') {
-                            $('.drinkSelected2').append("<i class='fas fa-check'></i> Selected!");
-                            $('.drinkSelected0').text("");
-                            $('.drinkSelected1').text("");
-                            $('.drinkSelected3').text("");
-                        } else {
-                            $('.drinkSelected2').text("");
-                        }
-                        break;
-    
-                    case "drink3":
-                        if ($('.drinkSelected3').text() == '') {
-                            $('.drinkSelected3').append("<i class='fas fa-check'></i> Selected!");
-                            $('.drinkSelected0').text("");
-                            $('.drinkSelected1').text("");
-                            $('.drinkSelected2').text("");
-                        } else {
-                            $('.drinkSelected3').text("");
-                        }    
-                        break;
-                    }
-            })
-        });
-
-    }
-
-    $("body").delegate('.selectDrink', "click", function () {
-        console.log($(this)[0].offsetParent);
-        console.log($('#userDrinkChoice')[0].innerHTML);
-
-        var selectedDrink = $(this)[0].offsetParent;
-
-        if ($('#userDrinkChoice')[0].innerHTML == "") {
-            $(selectedDrink).clone().appendTo('#userDrinkChoice');
-            $('#userDrinkChoice').find('i').parent().empty();
-        } else {
-            $('#userDrinkChoice').empty();
-            $(selectedDrink).clone().appendTo('#userDrinkChoice');
-            $('#userDrinkChoice').find('i').parent().empty();
         }
 
+        $(".selectDrink").on("click", function () {
+            switch ($(this).attr('id')) {
+                case "drink0":
+                    if ($('.drinkSelected0').text() == '') {
+                        $('.drinkSelected0').append("<i class='fas fa-check'></i> Selected!");
+                        $('.drinkSelected1').text("");
+                        $('.drinkSelected2').text("");
+                        $('.drinkSelected3').text("");
+                    } else {
+                        $('.drinkSelected0').text("");
+                    }
+                    break;
 
+                case "drink1":
+                    if ($('.drinkSelected1').text() == '') {
+                        $('.drinkSelected1').append("<i class='fas fa-check'></i> Selected!");
+                        $('.drinkSelected0').text("");
+                        $('.drinkSelected2').text("");
+                        $('.drinkSelected3').text("");
+                    } else {
+                        $('.drinkSelected1').text("");
+                    }
+                    break;
+
+                case "drink2":
+                    if ($('.drinkSelected2').text() == '') {
+                        $('.drinkSelected2').append("<i class='fas fa-check'></i> Selected!");
+                        $('.drinkSelected0').text("");
+                        $('.drinkSelected1').text("");
+                        $('.drinkSelected3').text("");
+                    } else {
+                        $('.drinkSelected2').text("");
+                    }
+                    break;
+
+                case "drink3":
+                    if ($('.drinkSelected3').text() == '') {
+                        $('.drinkSelected3').append("<i class='fas fa-check'></i> Selected!");
+                        $('.drinkSelected0').text("");
+                        $('.drinkSelected1').text("");
+                        $('.drinkSelected2').text("");
+                    } else {
+                        $('.drinkSelected3').text("");
+                    }
+                    break;
+            }
+        })
     });
+
+}
+
+$("body").delegate('.selectDrink', "click", function () {
+    console.log($(this)[0].offsetParent);
+    console.log($('#userDrinkChoice')[0].innerHTML);
+
+    var selectedDrink = $(this)[0].offsetParent;
+
+    if ($('#userDrinkChoice')[0].innerHTML == "") {
+        $(selectedDrink).clone().appendTo('#userDrinkChoice');
+        $('#userDrinkChoice').find('i').parent().empty();
+    } else {
+        $('#userDrinkChoice').empty();
+        $(selectedDrink).clone().appendTo('#userDrinkChoice');
+        $('#userDrinkChoice').find('i').parent().empty();
+    }
+
+
+});
