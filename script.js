@@ -11,7 +11,7 @@ var randomMovie;
 var newMovie;
 var randomMeal;
 var newMeal;
-var page = Math.floor(Math.random() * 12) + 1;
+var page = Math.floor(Math.random() * 7) + 1;
 var drinkQueryURL = "https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php";
 
 // Stops modal from closing when clicked outside
