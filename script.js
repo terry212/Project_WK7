@@ -318,63 +318,63 @@ function generateFood() {
             var mealIns = '';
             var youtube = mealArray[randomMeal].strYoutube;
 
-            if (mealArray[randomMeal].strIngredient1 != "") {
+            if (mealArray[randomMeal].strIngredient1 != "" || mealArray[randomMeal].strIngredient1 != null) {
                 mealIns = mealIns + mealArray[randomMeal].strIngredient1 + "<br>";
             }
 
-            if (mealArray[randomMeal].strIngredient2 != "") {
+            if (mealArray[randomMeal].strIngredient2 != "" || mealArray[randomMeal].strIngredient2 != null) {
                 mealIns = mealIns + mealArray[randomMeal].strIngredient2 + "<br>";
             }
 
-            if (mealArray[randomMeal].strIngredient3 != "") {
+            if (mealArray[randomMeal].strIngredient3 != "" || mealArray[randomMeal].strIngredient3 != null) {
                 mealIns = mealIns + mealArray[randomMeal].strIngredient3 + "<br>";
             }
 
-            if (mealArray[randomMeal].strIngredient4 != "") {
+            if (mealArray[randomMeal].strIngredient4 != "" || mealArray[randomMeal].strIngredient4 != null) {
                 mealIns = mealIns + mealArray[randomMeal].strIngredient4 + "<br>";
             }
 
-            if (mealArray[randomMeal].strIngredient5 != "") {
+            if (mealArray[randomMeal].strIngredient5 != "" || mealArray[randomMeal].strIngredient5 != null) {
                 mealIns = mealIns + mealArray[randomMeal].strIngredient5 + "<br>";
             }
 
-            if (mealArray[randomMeal].strIngredient6 != "") {
+            if (mealArray[randomMeal].strIngredient6 != "" || mealArray[randomMeal].strIngredient6 != null) {
                 mealIns = mealIns + mealArray[randomMeal].strIngredient6 + "<br>";
             }
 
-            if (mealArray[randomMeal].strIngredient7 != "") {
+            if (mealArray[randomMeal].strIngredient7 != "" || mealArray[randomMeal].strIngredient7 != null) {
                 mealIns = mealIns + mealArray[randomMeal].strIngredient7 + "<br>";
             }
 
-            if (mealArray[randomMeal].strIngredient8 != "") {
+            if (mealArray[randomMeal].strIngredient8 != "" || mealArray[randomMeal].strIngredient8 != null) {
                 mealIns = mealIns + mealArray[randomMeal].strIngredient8 + "<br>";
             }
 
-            if (mealArray[randomMeal].strIngredient9 != "") {
+            if (mealArray[randomMeal].strIngredient9 != "" || mealArray[randomMeal].strIngredient9 != null) {
                 mealIns = mealIns + mealArray[randomMeal].strIngredient9 + "<br>";
             }
 
-            if (mealArray[randomMeal].strIngredient10 != "") {
+            if (mealArray[randomMeal].strIngredient10 != "" || mealArray[randomMeal].strIngredient10 != null) {
                 mealIns = mealIns + mealArray[randomMeal].strIngredient10 + "<br>";
             }
 
-            if (mealArray[randomMeal].strIngredient11 != "") {
+            if (mealArray[randomMeal].strIngredient11 != "" || mealArray[randomMeal].strIngredient11 != null) {
                 mealIns = mealIns + mealArray[randomMeal].strIngredient11 + "<br>";
             }
 
-            if (mealArray[randomMeal].strIngredient12 != "") {
+            if (mealArray[randomMeal].strIngredient12 != "" || mealArray[randomMeal].strIngredient12 != null) {
                 mealIns = mealIns + mealArray[randomMeal].strIngredient12 + "<br>";
             }
 
-            if (mealArray[randomMeal].strIngredient13 != "") {
+            if (mealArray[randomMeal].strIngredient13 != "" || mealArray[randomMeal].strIngredient13 != null) {
                 mealIns = mealIns + mealArray[randomMeal].strIngredient13 + "<br>";
             }
 
-            if (mealArray[randomMeal].strIngredient14 != "") {
+            if (mealArray[randomMeal].strIngredient14 != "" || mealArray[randomMeal].strIngredient14 != null) {
                 mealIns = mealIns + mealArray[randomMeal].strIngredient14 + "<br>";
             }
 
-            if (mealArray[randomMeal].strIngredient15 != "") {
+            if (mealArray[randomMeal].strIngredient15 != "" || mealArray[randomMeal].strIngredient15 != null) {
                 mealIns = mealIns + mealArray[randomMeal].strIngredient15 + "<br>";
             }
 
