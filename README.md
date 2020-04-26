@@ -42,5 +42,5 @@ THEN I am able to start over or share to social media
 ## GitHub Pages
 
 ```
-https://tonidavisj.github.io/quaranteam-project
+https://terry212.github.io/Project_WK7/
 ```
